@@ -1,61 +1,86 @@
-%%%%%%%%%% CAPITOLO DI TESI %%%%%%%%%%
-%
-% Capitolo "1" Introduzione
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%-------------------------------------------------------------
+%				INTRODUZIONE
+%-------------------------------------------------------------
+
 \mcchap{Introduzione}{cap:intro}
 
 \section{Introduzione}
-%% commenti
-Questa è l'introduzione\cite{ETICHETTA}.\\ 
-%% a capo
+Nel periodo di apprendistato in 7Pixel sono stato assegnato al team Iguana, team che si occupa
+della gestione principalmente front-end dei siti del \emph{Kirivo Network}
 
-\subsection{è una sotto sezione}
-Fai dei punti:
-\begin{itemize}
-\item punto 1
-\item punto 2
-\item punto 3
-\end{itemize}
+\subsection{Il Kirivo Network}
+Il Kirivo Network (KN) è composto da due siti  \url{www.kirivo.it} 
+e \url{www.origini.it}:
 
-\subsection{code}
-\lstinputlisting[style=customjava, language=Java]{code/HelloWorld.java}
+\url{www.kirivo.it} è un negozio online che vende prodotti di tutte le categorie.
+Il marketplace dispone di un offerta di oltre 800.000 articoli in tutte le categorie tra cui
+elettrodomestici, prodotti per la casa, smartphone e TV, giocattoli, moda e altri.
 
-\subsection{table}
+\url{www.origini.it} è una divisione verticale di Kirivo. Il sito è specializzato nella vendita
+di vini e offre un ampia offerta di prodotti divisi per cantine e regioni. Il sito
+è online da Novembre 2016.
 
-\begin {table}[H]
-\caption {Tabella di prova} \label{tab:tabprova} 
-\begin{center}
-\begin{tabular}{|c|c|c|}
-  
-  \hline
-  \rowcolor[gray]{.6}
-  \textbf{colonna1} & \textbf{colonna2} & \textbf{colonna3} \\
-  
-  \hline
-  \rowcolor[gray]{.8}
-  riga1 &  5 & 15\\
-  
-  \hline
-  \rowcolor[gray]{.9}
-  riga2 &  3 & 3\\
-  
-  \hline
-  \rowcolor[gray]{.8}
-  riga3 & 5 & 29.5\\
-  
-  \hline
-\end{tabular} 
-\end{center}
-\end{table}
+I siti del Kirivo Network fanno utilizzo di servizi di Back-End comuni che permettono 
+di effettuare acquisti nei due siti utilizzando un unico account ed un unico carrello.
+%Con buone probabilità verranno aggiunti in futuro nuovi verticali per alcune categorie
+%di Kirivo.
 
-\subsection{image}
+Le applicazioni del kirivo network sono serviti tramite un web server \emph{Ruby} implementato
+usando il framework \emph{Ruby on Rails} chiamato \emph{Kiruby}
 
-\begin{figure}[htbp]
-\begin{flushright}
-\centering
-\includegraphics[width=0.25\textwidth]{figure/tex.png}
-\caption{Immagine di Latex}
-\label{fig:gc}
-\end{flushright}
-\end{figure}
+\subsection{Gestione delle homepage}
+
+Le homepage di Origini e Kirivo sono le pagine che, nei rispettivi siti, possono cambiare contenuto più 
+frequentemente. Inoltre scegliere quali prodotti, quali offerte e quali contenuti 
+vanno inseriti in homepage non è compito dei programmatori ma dei \emph{content},
+quindi si rivela importante dare la possibilità ai content di fare modifiche, come cambiare un prodotto da
+mettere tra quelli in evidenza, senza dover passare ogni volta dai programmatori.
+
+Per dare più libertà ai content, il contenuto della homepage, ovvero tutto quello che non è
+header e footer, non si trova nel server Kiruby ma in pagine Wordpress che i content possono direttamente 
+modificare accedendo alla sezione admin di Wordpress.
+
+Il server Kiruby quando deve visualizzare la home chiede a Wordpress la pagina della home, ne estrae
+il contenuto e lo renderizza nell'html tra Header e Footer
+
+\subsection{La gemma cmsdealer}
+Per visualizzare contenuti dinamici, come ad esempio un Box di 4 vini viene utilizzata
+una gemma Ruby creata da un collega chiamata \emph{cmsdealer}.
+
+Questa gemma viene usata dal server Kiruby. Questo mentre scansiona la pagina di Wordpress da includere
+se incontra un tag di nome \emph{cmsdealer} legge l'attributo \emph{type} e in base al valore di questo
+seleziona il corrispondente template, legge l'ID dei prodotti e stampa l'html del box con
+i valori dei prodotti selezionati
+
+Esempio: se nella pagina Wordpress Kiruby trova
+\begin{verbatim}
+	<dynamic type="OriginiListingBox" ids="3422,2345,2872,2209" />
+\end{verbatim}
+allora verrà cercato il template di \emph{originilistingbox.html.erb} e verrà popolato
+coi valori dei prodotti con gli id specificati nell attributo \emph{ids}.
+
+
+\newpage
+\subsection{Obbiettivo}
+L'obbiettivo del progetto è quello di rendere l'edit delle pagine
+da parte dei content molto più semplice e flessibile,
+facendo in modo che i contenuti delle homepage possano essere editati visualmente e non
+andando a mettere mano direttamente sul codice html.
+
+Per farlo i content dovranno interagire con un interfaccia grafica web che permette
+la modifica delle informazioni necessarie e di poter spostare e copiare
+componenti della home con un click o con un drag and drop.
+
+\subsection{Obbiettivo secondario}
+Obbiettivo secondario del progetto e di rendere il sito più manutenibile.
+
+La criticità del sistema è che contiene codice duplicato nella gemma CmsDealer, in Kiruby
+e nei widget di Wordpress. 
+
+Per risolvere il problema sono state create le  \emph{RenderdPricesAPI} 
+che restituiscono frammenti di html renderizzato per varie componenti della home.
+
+In questo modo il codice del template resta solamente in Kiruby e esponendo le 
+API questo viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer
+

@@ -1,6 +1,11 @@
 \BOOKMARK [0][-]{chapter.1}{Introduzione}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Introduzione}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{\350 una sotto sezione}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{code}{section.1.1}% 4
-\BOOKMARK [2][-]{subsection.1.1.3}{table}{section.1.1}% 5
-\BOOKMARK [2][-]{subsection.1.1.4}{image}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.1}{Il Kirivo Network}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Gestione delle homepage}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{La gemma cmsdealer}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.4}{Obbiettivo}{section.1.1}% 6
+\BOOKMARK [2][-]{subsection.1.1.5}{Obbiettivo secondario}{section.1.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Metodologie di sviluppo}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Sviluppo agile}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{TDD}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.2}{Pair Programming}{section.2.1}% 11
