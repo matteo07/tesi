@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.21)  7 JUL 2017 15:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.21)  7 JUL 2017 16:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,31 +896,32 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 
 
 Writing index file main.idx
-(./main.aux (./cap1/cap1.aux) (./cap2/cap2.aux) (./colophon/colophon.aux))
+(./main.aux (./cap1/cap1.aux) (./cap2/cap2.aux) (./widget-o/main.aux)
+(./widget-k/main.aux) (./colophon/colophon.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 129.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 129.
+LaTeX Font Info:    ... okay on input line 129.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -956,15 +957,15 @@ LaTeX Font Info:    ... okay on input line 130.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \it@ocap on input line 130.
-LaTeX Info: Redefining \it@ccap on input line 130.
+LaTeX Info: Redefining \it@ocap on input line 129.
+LaTeX Info: Redefining \it@ccap on input line 129.
 
 File italian.ldf warning: 
 italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 130.
+italian.ldf    on input line 129.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -997,7 +998,7 @@ e
 ))
 \c@lstlisting=\count148
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring OFF on input line 130.
+Package hyperref Info: Link coloring OFF on input line 129.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1007,16 +1008,16 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count149
 )
-LaTeX Info: Redefining \ref on input line 130.
-LaTeX Info: Redefining \pageref on input line 130.
-LaTeX Info: Redefining \nameref on input line 130.
+LaTeX Info: Redefining \ref on input line 129.
+LaTeX Info: Redefining \pageref on input line 129.
+LaTeX Info: Redefining \nameref on input line 129.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
  (./copertina/copertina.tex
-<copertina/logounivector.pdf, id=48, 422.47905pt x 402.27107pt>
+<copertina/logounivector.pdf, id=92, 422.47905pt x 402.27107pt>
 File: copertina/logounivector.pdf Graphic file (type pdf)
 
 <use copertina/logounivector.pdf>
@@ -1036,7 +1037,7 @@ pdf>]) [2
 [1] [2
 
 ]
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 153.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 152.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (./main.toc
@@ -1057,14 +1058,14 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.154   \listoffigures
+l.153   \listoffigures
                        [1
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.154   \listoffigures
+l.153   \listoffigures
                        [2
 
 ] (./main.lof)
@@ -1116,52 +1117,133 @@ l.64 \newpage
 ]
 Capitolo 2.
 ) [5]
+\openout2 = `widget-o/main.aux'.
+
+ (./widget-o/main.tex [6
+
+
+
+]
+Capitolo 3.
+[7] <figure/oprod.png, id=224, 1216.545pt x 710.655pt>
+File: figure/oprod.png Graphic file (type png)
+ <use figure/oprod.png>
+Package pdftex.def Info: figure/oprod.png used on input line 26.
+(pdftex.def)             Requested size: 418.25368pt x 244.31958pt.
+
+[8 <./figure/oprod.png (PNG copy)>]
+<figure/oreg.png, id=232, 1913.1475pt x 303.1325pt>
+File: figure/oreg.png Graphic file (type png)
+ <use figure/oreg.png>
+Package pdftex.def Info: figure/oreg.png used on input line 48.
+(pdftex.def)             Requested size: 418.25368pt x 66.26843pt.
+
+[9 <./figure/oreg.png>] <figure/ospec.png, id=240, 1558.82375pt x 608.2725pt>
+File: figure/ospec.png Graphic file (type png)
+
+<use figure/ospec.png>
+Package pdftex.def Info: figure/ospec.png used on input line 69.
+(pdftex.def)             Requested size: 418.25368pt x 163.20552pt.
+) [10 <./figure/ospec.png>]
+\openout2 = `widget-k/main.aux'.
+
+ (./widget-k/main.tex
+Capitolo 4.
+[11
+
+
+
+]
+
+LaTeX Warning: Reference `fig:figure/kspec' on page 12 undefined on input line 
+24.
+
+<figure/kspec.png, id=249, 1008.76875pt x 374.39874pt>
+File: figure/kspec.png Graphic file (type png)
+ <use figure/kspec.png>
+Package pdftex.def Info: figure/kspec.png used on input line 35.
+(pdftex.def)             Requested size: 418.25368pt x 155.22975pt.
+
+[12 <./figure/kspec.png>]
+<figure/knews.png, id=255, 1045.9075pt x 270.00874pt>
+File: figure/knews.png Graphic file (type png)
+ <use figure/knews.png>
+Package pdftex.def Info: figure/knews.png used on input line 59.
+(pdftex.def)             Requested size: 418.25368pt x 107.97685pt.
+
+[13 <./figure/knews.png>]
+<figure/kevid.png, id=262, 1158.3275pt x 603.25375pt>
+File: figure/kevid.png Graphic file (type png)
+ <use figure/kevid.png>
+Package pdftex.def Info: figure/kevid.png used on input line 80.
+(pdftex.def)             Requested size: 418.25368pt x 217.82472pt.
+
+[14 <./figure/kevid.png>]
+<figure/kslide.png, id=269, 1173.38374pt x 534.99875pt>
+File: figure/kslide.png Graphic file (type png)
+
+<use figure/kslide.png>
+Package pdftex.def Info: figure/kslide.png used on input line 102.
+(pdftex.def)             Requested size: 418.25368pt x 190.69733pt.
+) [15 <./figure/kslide.png>]
 \openout2 = `colophon/colophon.aux'.
 
- (./colophon/colophon.tex [6
+ (./colophon/colophon.tex
+[16
 
 
 
-]) [7] [8
+])
+Underfull \hbox (badness 10000) in paragraph at lines 8--185
+
+ []
+
+[17] [18
 
 
 ]
 No file main.ind.
 (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 194.
- [9
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+ [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 194.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
  (./main.aux (./cap1/cap1.aux) (./cap2/cap2.aux)
-(./colophon/colophon.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 194.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 194.
+(./widget-o/main.aux) (./widget-k/main.aux) (./colophon/colophon.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 195.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 81D39FDEA642F9605FF920073E0B4F92;704.
+(rerunfilecheck)             Checksum: 64156765EE8E96C5738E795C8B63EBC3;1496.
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 9944 strings out of 493013
- 140223 string characters out of 6135682
- 248807 words of memory out of 5000000
- 13237 multiletter control sequences out of 15000+600000
- 17166 words of font info for 46 fonts, out of 8000000 for 9000
+ 10053 strings out of 493013
+ 141808 string characters out of 6135682
+ 251602 words of memory out of 5000000
+ 13294 multiletter control sequences out of 15000+600000
+ 17507 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,11n,43p,790b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on main.pdf (19 pages, 147602 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texli
+ve/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb>
+Output written on main.pdf (29 pages, 4253857 bytes).
 PDF statistics:
- 209 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 94 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 349 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
