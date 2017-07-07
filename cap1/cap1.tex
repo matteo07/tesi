@@ -1,0 +1,61 @@
+%%%%%%%%%% CAPITOLO DI TESI %%%%%%%%%%
+%
+% Capitolo "1" Introduzione
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mcchap{Introduzione}{cap:intro}
+
+\section{Introduzione}
+%% commenti
+Questa è l'introduzione\cite{ETICHETTA}.\\ 
+%% a capo
+
+\subsection{è una sotto sezione}
+Fai dei punti:
+\begin{itemize}
+\item punto 1
+\item punto 2
+\item punto 3
+\end{itemize}
+
+\subsection{code}
+\lstinputlisting[style=customjava, language=Java]{code/HelloWorld.java}
+
+\subsection{table}
+
+\begin {table}[H]
+\caption {Tabella di prova} \label{tab:tabprova} 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+  
+  \hline
+  \rowcolor[gray]{.6}
+  \textbf{colonna1} & \textbf{colonna2} & \textbf{colonna3} \\
+  
+  \hline
+  \rowcolor[gray]{.8}
+  riga1 &  5 & 15\\
+  
+  \hline
+  \rowcolor[gray]{.9}
+  riga2 &  3 & 3\\
+  
+  \hline
+  \rowcolor[gray]{.8}
+  riga3 & 5 & 29.5\\
+  
+  \hline
+\end{tabular} 
+\end{center}
+\end{table}
+
+\subsection{image}
+
+\begin{figure}[htbp]
+\begin{flushright}
+\centering
+\includegraphics[width=0.25\textwidth]{figure/tex.png}
+\caption{Immagine di Latex}
+\label{fig:gc}
+\end{flushright}
+\end{figure}
