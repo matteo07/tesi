@@ -9,7 +9,7 @@ Nel periodo di apprendistato\cite{ETICHETTA} in 7Pixel sono stato assegnato al t
 della gestione principalmente front-end dei siti del \emph{Kirivo Network}
 
 \section{Il Kirivo Network}
-Il Kirivo Network (KN) è composto da due siti  \url{www.kirivo.it} 
+Il Kirivo Network (KN) è attualmente composto da due siti  \url{www.kirivo.it} 
 e \url{www.origini.it}:
 
 \url{www.kirivo.it} è un negozio online che vende prodotti di tutte le categorie.
@@ -22,13 +22,46 @@ di vini e offre un ampia offerta di prodotti divisi per cantine e regioni. Il si
 
 I siti del Kirivo Network fanno utilizzo di servizi di Back-End comuni che permettono 
 di effettuare acquisti nei due siti utilizzando un unico account ed un unico carrello.
-%Con buone probabilità verranno aggiunti in futuro nuovi verticali per alcune categorie
+%Con buone probabilità verranno aggiunti in futuro nuovi siti verticali per alcune categorie
 %di Kirivo.
 
-Le applicazioni del kirivo network sono serviti tramite un web server \emph{Ruby} implementato
+Le applicazioni del Kirivo network sono serviti tramite un web server \emph{Ruby} implementato
 usando il framework \emph{Ruby on Rails} chiamato \emph{Kiruby}
 
-\section{Gestione delle homepage}
+\section{Architettura del Kirivo Network}
+Per l'erogazione dei siti del Kirivo network vengono usati diversi server
+\begin{itemize}
+\item {\bf Hybris}: una piattaforma Enterprise di e-commerce scritta in Java che offre una soluzione all-in-one per i siti 
+di e-commerce comprendendo servizi quali la gestione del catalogo dei prodotti, degli utenti e la 
+gestione sicura dei pagamenti.
+
+Hybris utilizza una database relazione Postgres ed utilizza il motore di ricerca Java SolR.
+
+Il sito Kirivo è nato utilizzando una piattaforma a pagamento per velocizzare i tempi di sviluppo.
+\item {\bf Kitty}: un server di backend in Ruby, attualmente si sta lavorando nel migrare gradualmente tutte le funzionalità
+di Hybris in Kitty in modo da non aver più bisogno in futuro della piattaforma di e-commerce.
+\item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris e Kitty utilizzando i loro
+servizi di backend. 
+\item Wordpress: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
+
+Il server di Wordpress si trova nella LAN aziendale e si interfaccia solamente con il server Kiruby.
+\item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni
+e viene usato da Kiruby come cache di contenuti. 
+\item {\bf Nginx}: un Reverse proxy usato per redirigere le chiamate ai server opportuni.
+\end{itemize}
+
+\section{I team del Kirivo Network}
+Lo sviluppo è l manutenzione dei siti del Kirivo Network viene effettuato da più team e questi sono:
+\begin{itemize}
+\item {\bf Team Iguana}: si occupano dello sviluppo di Kiruby.
+\item {\bf Team Nimbus}: si occupano dello svlippo di Hybris e Kitty.
+\item {\bf Content Manager}: si occupano della gestione dei prodotti e della creazione di pagine di speciali 
+utilizzando Hybris e Wordpress
+\item {\bf Grafica}: lavora o direttamente su Kiruby o da al team Iguana grafiche Html che vengono poi integrate con i 
+vari servizi.
+\end{itemize}
+
+\section{Gestione delle homepage} 	
 
 Le homepage di Origini e Kirivo sono le pagine che, nei rispettivi siti, possono cambiare contenuto più 
 frequentemente. Inoltre scegliere quali prodotti, quali offerte e quali contenuti 
