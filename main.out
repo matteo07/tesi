@@ -1,22 +1,23 @@
 \BOOKMARK [0][-]{chapter.1}{Introduzione}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Introduzione}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{Il Kirivo Network}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{Gestione delle homepage}{section.1.1}% 4
-\BOOKMARK [2][-]{subsection.1.1.3}{La gemma cmsdealer}{section.1.1}% 5
-\BOOKMARK [2][-]{subsection.1.1.4}{Obbiettivo}{section.1.1}% 6
-\BOOKMARK [2][-]{subsection.1.1.5}{Obbiettivo secondario}{section.1.1}% 7
-\BOOKMARK [0][-]{chapter.2}{Metodologie di sviluppo}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Sviluppo agile}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.1.1}{TDD}{section.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.1.2}{Pair Programming}{section.2.1}% 11
-\BOOKMARK [0][-]{chapter.3}{Widgets di Origini}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Widgets di Origini}{chapter.3}% 13
-\BOOKMARK [2][-]{subsection.3.1.1}{Origini - Slider prodotti}{section.3.1}% 14
-\BOOKMARK [2][-]{subsection.3.1.2}{Origini - Banda tuttoschermo}{section.3.1}% 15
-\BOOKMARK [2][-]{subsection.3.1.3}{Origini - Speciale}{section.3.1}% 16
-\BOOKMARK [0][-]{chapter.4}{Widgets di Kirivo}{}% 17
-\BOOKMARK [1][-]{section.4.1}{Widgets di Kirivo}{chapter.4}% 18
-\BOOKMARK [2][-]{subsection.4.1.1}{Kirivo - Immagini Speciali}{section.4.1}% 19
-\BOOKMARK [2][-]{subsection.4.1.2}{Kirivo - Immagini Newsletter}{section.4.1}% 20
-\BOOKMARK [2][-]{subsection.4.1.3}{Kirivo - Prodotti in evidenza}{section.4.1}% 21
-\BOOKMARK [2][-]{subsection.4.1.4}{Kirivo - Slider prodotti}{section.4.1}% 22
+\BOOKMARK [1][-]{section.1.1}{Il Kirivo Network}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Gestione delle homepage}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{La gemma cmsdealer}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Obbiettivo}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Obbiettivo secondario}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{Sviluppo agile}{}% 7
+\BOOKMARK [1][-]{section.2.1}{TDD}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Pair Programming}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Fase di formazione aziendale}{}% 10
+\BOOKMARK [1][-]{section.3.1}{}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Wordpress}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{Sviluppo agile}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.3.1}{Sistemismo di wp}{section.3.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Widgets di Origini}{}% 15
+\BOOKMARK [1][-]{section.4.1}{Origini - Slider prodotti}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.2}{Origini - Banda tuttoschermo}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.3}{Origini - Speciale}{chapter.4}% 18
+\BOOKMARK [0][-]{chapter.5}{Widgets di Kirivo}{}% 19
+\BOOKMARK [1][-]{section.5.1}{Kirivo - Immagini Speciali}{chapter.5}% 20
+\BOOKMARK [1][-]{section.5.2}{Kirivo - Immagini Newsletter}{chapter.5}% 21
+\BOOKMARK [1][-]{section.5.3}{Kirivo - Prodotti in evidenza}{chapter.5}% 22
+\BOOKMARK [1][-]{section.5.4}{Kirivo - Slider prodotti}{chapter.5}% 23
