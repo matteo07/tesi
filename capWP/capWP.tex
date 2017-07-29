@@ -19,6 +19,9 @@ comportare dei problemi di sicurezza.
 Per iniziare i miei lavori su Wordpress era necessario impostare un ambiente di sviluppo e dei modi per automatizzare
 la distribuzione delle modifiche.
 
+Inoltre era necessario aggiungere un sistema di versionamento che fino a quel momento per Wordpress, a differenza
+degli altri progetti, non veniva utilizzato.
+
 \section{Architettura per lo sviluppo}
 
 In 7Pixel per lo sviluppo di tutte le applicazioni viene usata la seguente architettura basata su tre macchine:
@@ -49,10 +52,37 @@ Prima dei deploy, sia in LAB che in produzione, vengono fatti girare tutti i tes
 \section{Impostazione della macchine di sviluppo}
 
 Prima del mio arrivo il Team Iguana non si occupava dello sviluppo di Wordpress, non era quindi presente
-una macchina di sviluppo locale.
+nelle macchine di sviluppo locale.
 
 è stato mio compito quindi, prima di iniziare a sviluppare, di installare su tutte le macchine di sviluppo
-un istanza di Wordpress, servita dal server Nginx.
+un istanza di Wordpress, servita dal server Nginx, lo stesso server già presente nelle macchine locali per
+la reindirizzazione delle chiamate a Kiruby.
 
+è stato poi creata un repository di git per il versionamento di Wordpress. In particolare è stata versionata
+la cartella "wp-content", ovvero la cartella dove vengono effettuate le varie personalizzazioni
 
 \section{Creazione dello script di deploy}
+Lo script di deploy, essendo tutte la macchine macchine Linux, è stato scritto in un file eseguibile
+"kirCMS-autodeploy.sh" utilizzando il linguaggio Bash ed utilizza una procedura simile allo script di deploy 
+utilizzato da Kiruby.
+
+Prima di eseguire il deploy è necessario fare commit sul master della repository di Wordpress.
+
+Una volta committate le modifiche bisogna eseguire lo script "kirCMS-autodeploy.sh" passandogli come argomento
+"lab" o "pro" a seconda della macchina su cui si vuole deploiare.
+
+Lo script per prima cosa apre un tunnel verso la macchina dove si vuole deploiare e si collega a questo in remoto.
+
+Una volta collegato in remoto viene scaricata da "Gitlab" l'ultima versione committata della repository dentro la cartella /tmp
+e vengono eseguiti tutti i test di PhpUnit (eseguendo lo script "test.sh").
+
+Se i test falliscono viene stampato a console un messaggio di errore e la procedura termina lasciando online
+la versione precedente.
+
+Se tutti i test passano la cartella scaricata in /tmp viene spostata dentro wordpress col nome wp-content ed inizierà
+ad essere online, la precedente cartella wp-content viene rinominata come wp-content-bkp, la precedente cartella wp-content-bkp
+viene eliminata.
+
+La cartella wp-content-bkp serve a tenere ancora disponibile la versione precedente così, se vengono individuati
+degli errori con il nuovo deploy, per ritornare alla situazione precedente è sufficente eliminare la cartella wp-content
+e rinominare wp-content-bkp in wp-content.
