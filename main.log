@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.7.22)  22 JUL 2017 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.7.22)  29 JUL 2017 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,11 +877,12 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 
 
 Writing index file main.idx
-(./main.aux (./cap1/cap1.aux) (./cap2/cap2.aux) (./cap3/cap3.aux
+(./main.aux (./cap1/cap1.aux) (./cap3/cap3.aux) (./cap2/cap2.aux
 
 LaTeX Warning: Label `cap:agile' multiply defined.
 
-) (./widget-o/main.aux) (./widget-k/main.aux) (./colophon/colophon.aux))
+) (./capWP/capWP.aux) (./widget-o/main.aux) (./widget-k/main.aux)
+(./colophon/colophon.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
@@ -1001,7 +1002,7 @@ LaTeX Info: Redefining \nameref on input line 129.
 \openout4 = `main.out'.
 
  (./copertina/copertina.tex
-<copertina/logounivector.pdf, id=104, pagebox=cropbox, 422.47905pt x 402.27107p
+<copertina/logounivector.pdf, id=116, pagebox=cropbox, 422.47905pt x 402.27107p
 t>
 File: copertina/logounivector.pdf Graphic file (type pdf)
 <use copertina/logounivector.pdf>
@@ -1052,13 +1053,13 @@ s been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.153   \listoffigures
-                       [2
-
-] (./main.lof)
+                       [2] (./main.lof)
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
- [3] [4
+ [3
+
+] [4
 
 ] (./main.lot)
 \tf@lot=\write7
@@ -1072,12 +1073,16 @@ l.153   \listoffigures
 
 (./cap1/cap1.tex
 Capitolo 1.
+
+Underfull \vbox (badness 2035) has occurred while \output is active []
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 
-      [1
+l.38 \item {
+            \bf Hybris}: una piattaforma Enterprise di e-commerce scritta in...
+[1
 
 
 
@@ -1092,97 +1097,107 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.71 
-      [2] [3]) [4]
-\openout2 = `cap2/cap2.aux'.
+l.69 \item {
+            \bf Grafica}: lavora o direttamente su Kiruby o da al team Iguan...
+[2] [3]) [4]
+\openout2 = `cap3/cap3.aux'.
 
- (./cap2/cap2.tex
+ (./cap3/cap3.tex
 Capitolo 2.
 ) [5
 
 
 
 ]
-\openout2 = `cap3/cap3.aux'.
+\openout2 = `cap2/cap2.aux'.
 
- (./cap3/cap3.tex [6
+ (./cap2/cap2.tex [6
 
 
 
 ]
 Capitolo 3.
-) [7]
+[7]) [8]
+\openout2 = `capWP/capWP.aux'.
+
+ (./capWP/capWP.tex
+Capitolo 4.
+[9
+
+
+
+]) [10]
 \openout2 = `widget-o/main.aux'.
 
- (./widget-o/main.tex [8
+ (./widget-o/main.tex
+Capitolo 5.
+[11
 
 
 
 ]
-Capitolo 4.
-[9]
-<figure/oprod.png, id=252, 1216.545pt x 710.655pt>
+<figure/oprod.png, id=280, 1216.545pt x 710.655pt>
 File: figure/oprod.png Graphic file (type png)
 <use figure/oprod.png>
 Package pdftex.def Info: figure/oprod.png  used on input line 25. on input line
  25.
 Package pdftex.def Info: Requested size: 418.25368pt x 244.31958pt on input lin
 e 25.
- [10 <./figure/oprod.png (PNG copy)>]
-<figure/oreg.png, id=259, 1913.1475pt x 303.1325pt>
+ [12 <./figure/oprod.png (PNG copy)>]
+<figure/oreg.png, id=287, 1913.1475pt x 303.1325pt>
 File: figure/oreg.png Graphic file (type png)
 <use figure/oreg.png>
 Package pdftex.def Info: figure/oreg.png  used on input line 47. on input line 
 47.
 Package pdftex.def Info: Requested size: 418.25368pt x 66.26843pt on input line
  47.
- [11 <./figure/oreg.png>]
-<figure/ospec.png, id=266, 1558.82375pt x 608.2725pt>
+ [13 <./figure/oreg.png>]
+<figure/ospec.png, id=295, 1558.82375pt x 608.2725pt>
 File: figure/ospec.png Graphic file (type png)
 <use figure/ospec.png>
 Package pdftex.def Info: figure/ospec.png  used on input line 68. on input line
  68.
 Package pdftex.def Info: Requested size: 418.25368pt x 163.20552pt on input lin
 e 68.
-) [12 <./figure/ospec.png>]
+) [14 <./figure/ospec.png>]
 \openout2 = `widget-k/main.aux'.
 
  (./widget-k/main.tex
-Capitolo 5.
-[13
+Capitolo 6.
+[15
 
 
 
 ]
 
-LaTeX Warning: Reference `fig:figure/kspec' on page 14 undefined on input line 
+LaTeX Warning: Reference `fig:figure/kspec' on page 16 undefined on input line 
 23.
 
-<figure/kspec.png, id=275, 1008.76875pt x 374.39874pt>
+<figure/kspec.png, id=305, 1008.76875pt x 374.39874pt>
 File: figure/kspec.png Graphic file (type png)
 <use figure/kspec.png>
 Package pdftex.def Info: figure/kspec.png  used on input line 34. on input line
  34.
 Package pdftex.def Info: Requested size: 418.25368pt x 155.22975pt on input lin
 e 34.
-[14 <./figure/kspec.png>]
-<figure/knews.png, id=281, 1045.9075pt x 270.00874pt>
+[16 <./figure/kspec.png>]
+<figure/knews.png, id=311, 1045.9075pt x 270.00874pt>
 File: figure/knews.png Graphic file (type png)
 <use figure/knews.png>
 Package pdftex.def Info: figure/knews.png  used on input line 58. on input line
  58.
 Package pdftex.def Info: Requested size: 418.25368pt x 107.97685pt on input lin
 e 58.
- [15 <./figure/knews.png>]
-<figure/kevid.png, id=290, 1158.3275pt x 603.25375pt>
+ [17 <./figure/knews.png>]
+<figure/kevid.png, id=318, 1158.3275pt x 603.25375pt>
 File: figure/kevid.png Graphic file (type png)
 <use figure/kevid.png>
 Package pdftex.def Info: figure/kevid.png  used on input line 79. on input line
  79.
 Package pdftex.def Info: Requested size: 418.25368pt x 217.82472pt on input lin
 e 79.
- [16 <./figure/kevid.png>]
-<figure/kslide.png, id=297, 1173.38374pt x 534.99875pt>
+ [18 <./figure/kevid.png>]
+<figure/kslide.png, id=325, 1173.38374pt x 534.99875pt>
 File: figure/kslide.png Graphic file (type png)
 <use figure/kslide.png>
 Package pdftex.def Info: figure/kslide.png  used on input line 101. on input li
@@ -1190,36 +1205,36 @@ ne 101.
 Package pdftex.def Info: Requested size: 418.25368pt x 190.69733pt on input lin
 e 101.
 )
-[17 <./figure/kslide.png>]
+[19 <./figure/kslide.png>]
 \openout2 = `colophon/colophon.aux'.
 
- (./colophon/colophon.tex [18
+ (./colophon/colophon.tex [20
 
 
 
 ])
-Underfull \hbox (badness 10000) in paragraph at lines 8--186
+Underfull \hbox (badness 10000) in paragraph at lines 8--187
 
  []
 
-[19] [20
+[21] [22
 
 
 ]
 No file main.ind.
 (./main.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
- [21
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
+ [23
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
- (./main.aux (./cap1/cap1.aux) (./cap2/cap2.aux)
-(./cap3/cap3.aux) (./widget-o/main.aux) (./widget-k/main.aux)
-(./colophon/colophon.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
+ (./main.aux (./cap1/cap1.aux) (./cap3/cap3.aux)
+(./cap2/cap2.aux) (./capWP/capWP.aux) (./widget-o/main.aux)
+(./widget-k/main.aux) (./colophon/colophon.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DFB44F6722AB0A43D034B80934049716;1609.
+(rerunfilecheck)             Checksum: 1D5378BF7999B2D418AFFE3D557D9990;1838.
 
 
 LaTeX Warning: There were undefined references.
@@ -1229,10 +1244,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 9879 strings out of 494920
- 139443 string characters out of 6180375
- 241123 words of memory out of 5000000
- 12886 multiletter control sequences out of 15000+600000
+ 9897 strings out of 494920
+ 139690 string characters out of 6180375
+ 242669 words of memory out of 5000000
+ 12891 multiletter control sequences out of 15000+600000
  17507 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  34i,11n,43p,790b,402s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1247,10 +1262,10 @@ usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on main.pdf (31 pages, 4254168 bytes).
+Output written on main.pdf (33 pages, 4260614 bytes).
 PDF statistics:
- 376 PDF objects out of 1000 (max. 8388607)
- 318 compressed objects within 4 object streams
- 66 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 345 compressed objects within 4 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 265 words of extra memory for PDF output out of 10000 (max. 10000000)
 

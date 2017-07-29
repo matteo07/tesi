@@ -16,58 +16,68 @@ e \url{www.origini.it}:
 Il marketplace dispone di un offerta di oltre 800.000 articoli in tutte le categorie tra cui
 elettrodomestici, prodotti per la casa, smartphone e TV, giocattoli, moda e altri.
 
+\url{www.kirivo.it} è il marketplace ufficiale di \url{www.trovaprezzi.it}, il principale motore
+di ricerca italiano per la comparazione di prezzi.
+
 \url{www.origini.it} è una divisione verticale di Kirivo. Il sito è specializzato nella vendita
 di vini e offre un ampia offerta di prodotti divisi per cantine e regioni. Il sito
 è online da Novembre 2016.
 
 I siti del Kirivo Network fanno utilizzo di servizi di Back-End comuni che permettono 
 di effettuare acquisti nei due siti utilizzando un unico account ed un unico carrello.
-%Con buone probabilità verranno aggiunti in futuro nuovi siti verticali per alcune categorie
-%di Kirivo.
 
-Le applicazioni del Kirivo network sono serviti tramite un web server \emph{Ruby} implementato
-usando il framework \emph{Ruby on Rails} chiamato \emph{Kiruby}
+Con buone probabilità verranno aggiunti in futuro nuovi siti verticali per alcune categorie
+di Kirivo.
+
+%Le applicazioni del Kirivo network sono serviti tramite un web server \emph{Ruby} implementato
+%usando il framework \emph{Ruby on Rails} chiamato \emph{Kiruby}
 
 \section{Architettura del Kirivo Network}
 Per l'erogazione dei siti del Kirivo network vengono usati diversi server
 \begin{itemize}
 \item {\bf Hybris}: una piattaforma Enterprise di e-commerce scritta in Java che offre una soluzione all-in-one per i siti 
 di e-commerce comprendendo servizi quali la gestione del catalogo dei prodotti, degli utenti e la 
-gestione sicura dei pagamenti.
+gestione sicura dei pagamenti. La scelta di utilizzare una piattaforma di e-commerce a pagamento è stata fatta
+principalmente per velocizzare i tempi di sviluppo in fase iniziale.
 
-Hybris utilizza una database relazione Postgres ed utilizza il motore di ricerca Java SolR.
+Hybris utilizza una database relazione Postgres e il suo cataologo viene indicizzato dal motore di ricerca SolR.
 
-Il sito Kirivo è nato utilizzando una piattaforma a pagamento per velocizzare i tempi di sviluppo.
+\item {\bf SolR}: un motore di ricerca scritto in Java che permette di indicizzare i prodotti presenti a catalogo per una accesso
+più rapido, permette inoltre di filtrare in modo efficente i prodotti presenti a catalogo ottimizzando
+le ricerche per categorie o caratteristiche del prodotto.
 \item {\bf Kitty}: un server di backend in Ruby, attualmente si sta lavorando nel migrare gradualmente tutte le funzionalità
 di Hybris in Kitty in modo da non aver più bisogno in futuro della piattaforma di e-commerce.
-\item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris e Kitty utilizzando i loro
+\item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris, Solr e Kitty utilizzando i loro
 servizi di backend. 
-\item Wordpress: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
+\item {\bf Wordpress}: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
 
-Il server di Wordpress si trova nella LAN aziendale e si interfaccia solamente con il server Kiruby.
+Il server di Wordpress si trova nella LAN aziendale e si interfaccia solamente con il server Kiruby, la sua
+presenza è nascosta agli utentu finali.
 \item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni
-e viene usato da Kiruby come cache di contenuti. 
-\item {\bf Nginx}: un Reverse proxy usato per redirigere le chiamate ai server opportuni.
+e viene usato da Kiruby come cache di contenuti, specialmente per le richieste di Kiruby a Wordpress 
+\item {\bf Nginx}: un Reverse proxy usato per redirigere le chiamate fatte ai domini \url{www.kirivo.it} 
+e \url{www.origini.it} ai server opportuni.
 \end{itemize}
 
 \section{I team del Kirivo Network}
 Lo sviluppo è l manutenzione dei siti del Kirivo Network viene effettuato da più team e questi sono:
 \begin{itemize}
 \item {\bf Team Iguana}: si occupano dello sviluppo di Kiruby.
-\item {\bf Team Nimbus}: si occupano dello svlippo di Hybris e Kitty.
-\item {\bf Content Manager}: si occupano della gestione dei prodotti e della creazione di pagine di speciali 
-utilizzando Hybris e Wordpress
-\item {\bf Grafica}: lavora o direttamente su Kiruby o da al team Iguana grafiche Html che vengono poi integrate con i 
-vari servizi.
+\item {\bf Team Nimbus}: si occupano dello svliuppo di Hybris SolR e Kitty.
+\item {\bf Content Manager}: si occupano della comunicazione con i venditori, della gestione dei prodotti a catologo
+ e della creazione di pagine di speciali, lavorano interfacciandosi con Hybris e Wordpress
+\item {\bf Grafica}: lavora o direttamente su Kiruby o da al team Iguana grafiche Html che vengono poi rese dinamiche 
+ed integrate con i vari servizi.
 \end{itemize}
 
 \section{Gestione delle homepage} 	
 
 Le homepage di Origini e Kirivo sono le pagine che, nei rispettivi siti, possono cambiare contenuto più 
 frequentemente. Inoltre scegliere quali prodotti, quali offerte e quali contenuti 
-vanno inseriti in homepage non è compito dei programmatori ma dei \emph{content},
+vanno inseriti in homepage non è compito dei programmatori ma dei \emph{content managers},
 quindi si rivela importante dare la possibilità ai content di fare modifiche, come cambiare un prodotto da
-mettere tra quelli in evidenza, senza dover passare ogni volta dai programmatori.
+mettere tra quelli in evidenza in homepage, senza dover passare ogni volta dai programmatori per chiedere di
+fare modifiche.
 
 Per dare più libertà ai content, il contenuto della homepage, ovvero tutto quello che non è
 header e footer, non si trova nel server Kiruby ma in pagine Wordpress che i content possono direttamente 
@@ -115,4 +125,3 @@ che restituiscono frammenti di html renderizzato per varie componenti della home
 
 In questo modo il codice del template resta solamente in Kiruby e esponendo le 
 API questo viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer
-
