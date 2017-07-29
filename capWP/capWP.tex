@@ -1,0 +1,47 @@
+
+%-------------------------------------------------------------
+%				Studio in azienda
+%-------------------------------------------------------------
+
+\mcchap{Preparazione dell'ambiente di sviluppo per Wordpress}{cap:Preparazione dell'ambiente di sviluppo}
+
+Wordpress, essendo un Content Management System open source, è altamente personalizzabile e dispone
+di un innumerevole quantità di plugin, gratuiti e a pagamento, per ogni tipo di funzionalità.
+
+Al mio arrivo veniva usata un'installazione base di Wordpress con la sola aggiunta di un plugin "Microsoft Azure 
+for Wordpress" che fa in modo che tutte le immagini che vengono caricate su Wordpress dall'interfaccia web
+vengono caricate e servite da un server di Microsoft Azure.
+
+Questo serve principalmente, come accennato precedentemente, ad oscurare il dominio del server di Wordpress,
+infatti se in una pagina del KN ci fossero linkate le immagini con l'indirizzo di Wordpress questo potrebbe 
+comportare dei problemi di sicurezza.
+
+Per iniziare i miei lavori su Wordpress era necessario impostare un ambiente di sviluppo e dei modi per automatizzare
+la distribuzione delle modifiche.
+
+\section{Architettura per lo sviluppo}
+
+In 7Pixel per lo sviluppo di tutte le applicazioni viene usata la seguente architettura basata su tre macchine:
+\begin{itemize}
+\item {\bf Macchina di produzione}: è la macchina da cui vengono servite l'applicazione per l'utente finale.
+\item {\bf Macchina di LAB}: è un ambiente identico a quello di produzione. Viene utilizzato per testare le nuove funzionalità
+prima di venire deploiate in produzione.
+\item {\bf Macchina di sviluppo}: è la macchina dove lavorano gli sviluppatori, non vengono usati dati reali per i prodotti, 
+ma solo un numero ridotto di prodotti fake utili ai fini di testing
+\end{itemize}
+
+\section{Procedura di deploy}
+Per la distribuzione delle modifiche si usa il seguente procedura
+\begin{itemize}
+\item {\bf Sviluppo in locale}: viene editato il codice per aggiungere una nuova funzionalità usando
+TDD, una volta visto in locale che la funzionalità è stata implementata correttamente si passa alla fase successiva
+\item {\bf Test in lab}: le nuove modifiche vengono deploiate in LAB, qui, sfruttando un ambiente simile a quello di 
+produzione, vengono fatti ulteriori controlli, se si riscontra qualche problema si ritorna alla fase precedente e si corregge
+altrimenti si passa alla fase successiva 
+\item {\bf Deploy in produzione}: una volta effettuati i controlli in LAB le modifiche vengono pubblicate sulle macchine
+di produzione e saranno disponibili agli utenti finali, nei minuti successivi si tiene sotto controllo {\bf New Relic}, un
+applicazione di monitoraggio degli errori, per vedere se le modifiche pubblicate fanno generare degli errori inaspettati.
+In caso di errori si fa "Revert" alla versione precedente altrimenti la nuova funzionalità viene considerata pubblicata con successo
+\end{itemize}
+
+Prima dei deploy, sia in LAB che in produzione, vengono fatti girare tutti i test, unitari e di integrazione, e il codice viene pubblicato solo se tutti questi sono "verdi".
