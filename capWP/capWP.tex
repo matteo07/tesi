@@ -1,6 +1,6 @@
 
 %-------------------------------------------------------------
-%				Studio in azienda
+%				Preparazione wordpress
 %-------------------------------------------------------------
 
 \mcchap{Preparazione dell'ambiente di sviluppo per Wordpress}{cap:Preparazione dell'ambiente di sviluppo}
@@ -9,11 +9,11 @@ Wordpress, essendo un Content Management System open source, è altamente person
 di un innumerevole quantità di plugin, gratuiti e a pagamento, per ogni tipo di funzionalità.
 
 Al mio arrivo veniva usata un'installazione base di Wordpress con la sola aggiunta di un plugin "Microsoft Azure 
-for Wordpress" che fa in modo che tutte le immagini che vengono caricate su Wordpress dall'interfaccia web
+for Wordpress" che fa in modo che tutte le immagini che vengono caricate dal pannello di admin di Wordpress
 vengono caricate e servite da un server di Microsoft Azure.
 
 Questo serve principalmente, come accennato precedentemente, ad oscurare il dominio del server di Wordpress,
-infatti se in una pagina del KN ci fossero linkate le immagini con l'indirizzo di Wordpress questo potrebbe 
+infatti se in una pagina del KN fossero linkate le immagini con l'URL di Wordpress questo potrebbe 
 comportare dei problemi di sicurezza.
 
 Per iniziare i miei lavori su Wordpress era necessario impostare un ambiente di sviluppo e dei modi per automatizzare
@@ -24,13 +24,13 @@ degli altri progetti, non veniva utilizzato.
 
 \section{Architettura per lo sviluppo}
 
-In 7Pixel per lo sviluppo di tutte le applicazioni viene usata la seguente architettura basata su tre macchine:
+In 7Pixel per lo sviluppo di tutte le applicazioni, come tipico delle aziende che fanno sviluppo agile, viene usata la seguente architettura basata su tre macchine:
 \begin{itemize}
 \item {\bf Macchina di produzione}: è la macchina da cui vengono servite l'applicazione per l'utente finale.
 \item {\bf Macchina di LAB}: è un ambiente identico a quello di produzione. Viene utilizzato per testare le nuove funzionalità
 prima di venire deploiate in produzione.
 \item {\bf Macchina di sviluppo}: è la macchina dove lavorano gli sviluppatori, non vengono usati dati reali per i prodotti, 
-ma solo un numero ridotto di prodotti fake utili ai fini di testing
+ma solo un numero ridotto di prodotti fake utili ai fini di testing.
 \end{itemize}
 
 \section{Procedura di deploy}
@@ -44,7 +44,7 @@ altrimenti si passa alla fase successiva
 \item {\bf Deploy in produzione}: una volta effettuati i controlli in LAB le modifiche vengono pubblicate sulle macchine
 di produzione e saranno disponibili agli utenti finali, nei minuti successivi si tiene sotto controllo {\bf New Relic}, un
 applicazione di monitoraggio degli errori, per vedere se le modifiche pubblicate fanno generare degli errori inaspettati.
-In caso di errori si fa "Revert" alla versione precedente altrimenti la nuova funzionalità viene considerata pubblicata con successo
+In caso di errori si fa "rollback" alla versione precedente altrimenti la nuova funzionalità viene considerata pubblicata con successo
 \end{itemize}
 
 Prima dei deploy, sia in LAB che in produzione, vengono fatti girare tutti i test, unitari e di integrazione, e il codice viene pubblicato solo se tutti questi sono "verdi".
@@ -52,37 +52,40 @@ Prima dei deploy, sia in LAB che in produzione, vengono fatti girare tutti i tes
 \section{Impostazione della macchine di sviluppo}
 
 Prima del mio arrivo il Team Iguana non si occupava dello sviluppo di Wordpress, non era quindi presente
-nelle macchine di sviluppo locale.
+l'applicazione nelle macchine di sviluppo locale.
 
 è stato mio compito quindi, prima di iniziare a sviluppare, di installare su tutte le macchine di sviluppo
 un istanza di Wordpress, servita dal server Nginx, lo stesso server già presente nelle macchine locali per
 la reindirizzazione delle chiamate a Kiruby.
 
-è stato poi creata un repository di git per il versionamento di Wordpress. In particolare è stata versionata
-la cartella "wp-content", ovvero la cartella dove vengono effettuate le varie personalizzazioni
+è stato poi creata un repository di git per il versionamento di Wordpress. 
+Alla radice della cartella "wordpress" troviamo alcuni file di configurazione e le cartelle "wp-content", "wp-admin", ... di queste solo la
+cartella "wp-content" viene versionata perchè qui troviamo tutti i file rilevanti per la programmazione delle varie funzionalità, mentre nelle
+altre cartelle troviamo file di configurazione e altre funzionalità standard di "wordpress" che non vengono modificati dagli sviluppatori.
 
 \section{Creazione dello script di deploy}
-Lo script di deploy, essendo tutte la macchine macchine Linux, è stato scritto in un file eseguibile
+Lo script di deploy, essendo tutte la macchine di sviluppo e produzione macchine Linux, è stato scritto in un file eseguibile
 "kirCMS-autodeploy.sh" utilizzando il linguaggio Bash ed utilizza una procedura simile allo script di deploy 
 utilizzato da Kiruby.
 
-Prima di eseguire il deploy è necessario fare commit sul master della repository di Wordpress.
+Prima di eseguire il deploy è necessario fare commit sul master della repository di Wordpress in modo da avere i sorgenti git aggiornati.
 
-Una volta committate le modifiche bisogna eseguire lo script "kirCMS-autodeploy.sh" passandogli come argomento
+Una volta committate le modifiche da pubblicare bisogna eseguire lo script "kirCMS-autodeploy.sh" passandogli come argomento
 "lab" o "pro" a seconda della macchina su cui si vuole deploiare.
 
-Lo script per prima cosa apre un tunnel verso la macchina dove si vuole deploiare e si collega a questo in remoto.
+Lo script per prima cosa chiede le credenziali di autenticazione, apre un tunnel verso la macchina dove si vuole deploiare e si collega a questo in remoto.
 
 Una volta collegato in remoto viene scaricata da "Gitlab" l'ultima versione committata della repository dentro la cartella /tmp
-e vengono eseguiti tutti i test di PhpUnit (eseguendo lo script "test.sh").
+della macchina e vengono eseguiti tutti i test di PhpUnit eseguendo lo script "test.sh".
 
-Se i test falliscono viene stampato a console un messaggio di errore e la procedura termina lasciando online
-la versione precedente.
+Se i test falliscono viene stampato a console un messaggio con lo stack dell'errore e la procedura termina, lasciando invariata
+la versione precedentemente pubblicata.
 
-Se tutti i test passano la cartella scaricata in /tmp viene spostata dentro wordpress col nome wp-content ed inizierà
-ad essere online, la precedente cartella wp-content viene rinominata come wp-content-bkp, la precedente cartella wp-content-bkp
+Se tutti i test passano la cartella scaricata in /tmp viene spostata dentro wordpress col nome wp-content e il server inizierà a
+utilizzare le ultime modifiche, la precedente cartella wp-content viene rinominata come wp-content-bkp, la precedente cartella wp-content-bkp
 viene eliminata.
 
-La cartella wp-content-bkp serve a tenere ancora disponibile la versione precedente così, se vengono individuati
-degli errori con il nuovo deploy, per ritornare alla situazione precedente è sufficente eliminare la cartella wp-content
+La cartella wp-content-bkp serve a tenere ancora disponibile la versione precedente semplificando la precedura per un eventuale rollback. Se vengono individuati degli errori con il nuovo deploy, per ritornare alla situazione precedente è sufficente eliminare la cartella wp-content
 e rinominare wp-content-bkp in wp-content.
+
+Comando di rollback "/media/www/wordpress. rm wp-content ... mv wp-content-bkp wp-content"
