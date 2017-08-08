@@ -5,9 +5,34 @@
 
 \mcchap{Integrazione Page Builder}{cap:pb}
 
-Nel periodo di apprendistato\cite{ETICHETTA} in 7Pixel sono stato assegnato al team Iguana, team che si occupa
-della gestione principalmente front-end dei siti del \emph{Kirivo Network}
+Per passare ad una gestione più semplice delle pagine da parte dei content
+mi è stato chiesto di cercare qualche sistema che permettesse una suddivisione
+della pagina in componenti facilmente editabili e riutilizzabili.-
 
-\section{Il plugin Page Builder}
-Il Kirivo Network (KN) è attualmente composto da due siti  \url{www.kirivo.it} 
-e \url{www.origini.it}:
+Le esigenze erano:
+\begin{itemize}
+\item modificare il contenuto delle componenti da interfaccia grafica e non 
+editando il codice HTML.
+\item poter creare semplicemente copie delle componenti già create
+\item poter spostare le varie componenti con \emph{drag and drop} e avere
+feedback visivo immediato della modifica della pagina
+\end{itemize}
+
+Per questo mi è stato consigliato di fare una ricerca tra le varie soluzioni disponibli
+nella ampia libreria di plugin di Wordpress.
+
+Tra queste è stata individuata una soluzione open source chiamata \emph{Page Builder by
+Site Origin} che soddisfava le esigenze.
+
+Il plugin \emph{Page Builder} permette la suddivisione della pagina in colonne all'interno delle quali
+si possono inserire delle componenti standard fornite dal plugin oppure dei \emph{Widget}.
+Queste componenti possono essere duplicate, modificate aprendo il form della componente e spostate
+con drag and drop.
+\section{Widget}
+I \emph{Widget} sono delle componenti riutilizzabili che possono essere aggiunte a qualsiasi
+tipo di pagina Wordpress. Per creare un widget bisogna implementare una sottoclasse di WpWidget
+e sovrascrivere il metodo \emph{innin} dove viene restituito il contenuto HTML che la pagina deve restituire
+e, se si vuole del contenuto dinamico, sovrascrivere \emph{form} dove viene creato il form che verrà visualizzato dai content per modificare le
+parti dinamiche della componenti utilizzato da \emph{innin}.
+
+\section{Inizializzazione}

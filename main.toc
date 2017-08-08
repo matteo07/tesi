@@ -12,21 +12,24 @@
 \contentsline {section}{\numberline {2.1}Ruby e suoi framework}{5}{section.2.1}
 \contentsline {section}{\numberline {2.2}Wordpress}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}Sviluppo agile}{5}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Sistemismo di wp}{5}{subsection.2.3.1}
-\contentsline {chapter}{\numberline {3}Sviluppo agile}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}TDD}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Pair Programming}{7}{section.3.2}
-\contentsline {chapter}{\numberline {4}Preparazione dell'ambiente di sviluppo per Wordpress}{9}{chapter.4}
-\contentsline {section}{\numberline {4.1}Architettura per lo sviluppo}{9}{section.4.1}
-\contentsline {section}{\numberline {4.2}Procedura di deploy}{10}{section.4.2}
-\contentsline {section}{\numberline {4.3}Impostazione della macchine di sviluppo}{10}{section.4.3}
-\contentsline {section}{\numberline {4.4}Creazione dello script di deploy}{11}{section.4.4}
-\contentsline {chapter}{\numberline {5}Widgets di Origini}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Origini - Slider prodotti}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Origini - Banda tuttoschermo}{15}{section.5.2}
-\contentsline {section}{\numberline {5.3}Origini - Speciale}{16}{section.5.3}
-\contentsline {chapter}{\numberline {6}Widgets di Kirivo}{17}{chapter.6}
-\contentsline {section}{\numberline {6.1}Kirivo - Immagini Speciali}{18}{section.6.1}
-\contentsline {section}{\numberline {6.2}Kirivo - Immagini Newsletter}{19}{section.6.2}
-\contentsline {section}{\numberline {6.3}Kirivo - Prodotti in evidenza}{20}{section.6.3}
-\contentsline {section}{\numberline {6.4}Kirivo - Slider prodotti}{21}{section.6.4}
+\contentsline {subsection}{\numberline {2.3.1}TDD}{6}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Pair Programming}{6}{subsection.2.3.2}
+\contentsline {chapter}{\numberline {3}Integrazione Page Builder}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Widget}{8}{section.3.1}
+\contentsline {section}{\numberline {3.2}Inizializzazione}{8}{section.3.2}
+\contentsline {chapter}{\numberline {4}API rendered prices}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}API}{9}{section.4.1}
+\contentsline {chapter}{\numberline {5}Preparazione dell'ambiente di sviluppo per Wordpress}{11}{chapter.5}
+\contentsline {section}{\numberline {5.1}Architettura per lo sviluppo}{11}{section.5.1}
+\contentsline {section}{\numberline {5.2}Procedura di deploy}{12}{section.5.2}
+\contentsline {section}{\numberline {5.3}Impostazione della macchine di sviluppo}{12}{section.5.3}
+\contentsline {section}{\numberline {5.4}Creazione dello script di deploy}{13}{section.5.4}
+\contentsline {chapter}{\numberline {6}Widgets di Origini}{15}{chapter.6}
+\contentsline {section}{\numberline {6.1}Origini - Slider prodotti}{16}{section.6.1}
+\contentsline {section}{\numberline {6.2}Origini - Banda tuttoschermo}{17}{section.6.2}
+\contentsline {section}{\numberline {6.3}Origini - Speciale}{18}{section.6.3}
+\contentsline {chapter}{\numberline {7}Widgets di Kirivo}{19}{chapter.7}
+\contentsline {section}{\numberline {7.1}Kirivo - Immagini Speciali}{20}{section.7.1}
+\contentsline {section}{\numberline {7.2}Kirivo - Immagini Newsletter}{21}{section.7.2}
+\contentsline {section}{\numberline {7.3}Kirivo - Prodotti in evidenza}{22}{section.7.3}
+\contentsline {section}{\numberline {7.4}Kirivo - Slider prodotti}{23}{section.7.4}
