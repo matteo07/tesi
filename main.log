@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.7.22)  8 AUG 2017 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2017.7.22)  8 AUG 2017 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -877,7 +877,7 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 
 
 Writing index file main.idx
-(./main.aux (./cap1/cap1.aux) (./cap3/cap3.aux) (./cap2/cap2.aux
+(./main.aux (./cap1/cap1.aux) (./capStudio/capStudio.aux) (./cap2/cap2.aux
 
 LaTeX Warning: Label `cap:agile' multiply defined.
 
@@ -1080,7 +1080,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.38 \item {
+l.35 \item {
             \bf Hybris}: una piattaforma Enterprise di e-commerce scritta in...
 [1
 
@@ -1097,12 +1097,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.69 \item {
+l.68 \item {
             \bf Grafica}: lavora o direttamente su Kiruby o da al team Iguan...
 [2] [3]) [4]
-\openout2 = `cap3/cap3.aux'.
+\openout2 = `capStudio/capStudio.aux'.
 
- (./cap3/cap3.tex
+ (./capStudio/capStudio.tex
 Capitolo 2.
 ) [5
 
@@ -1232,7 +1232,7 @@ Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
- (./main.aux (./cap1/cap1.aux) (./cap3/cap3.aux)
+ (./main.aux (./cap1/cap1.aux) (./capStudio/capStudio.aux)
 (./cap2/cap2.aux) (./capWP/capWP.aux) (./widget-o/main.aux)
 (./widget-k/main.aux) (./colophon/colophon.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 197.
@@ -1249,7 +1249,7 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  9903 strings out of 494920
- 139752 string characters out of 6180375
+ 139832 string characters out of 6180375
  242669 words of memory out of 5000000
  12893 multiletter control sequences out of 15000+600000
  17507 words of font info for 47 fonts, out of 8000000 for 9000
@@ -1266,7 +1266,7 @@ usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/urw/times/utmb8a.pfb>
-Output written on main.pdf (35 pages, 4264160 bytes).
+Output written on main.pdf (35 pages, 4264172 bytes).
 PDF statistics:
  425 PDF objects out of 1000 (max. 8388607)
  363 compressed objects within 4 object streams
