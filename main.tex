@@ -26,27 +26,48 @@
 \definecolor{orange}{rgb}{0.9,0.5,0.08}
 \definecolor{purple}{rgb}{0.5,0.01,0.5}
 
+\definecolor{dkgreen}{rgb}{.1,.1,.1}
+\definecolor{dkblue}{rgb}{0,0,.6}
+\definecolor{dkyellow}{cmyk}{0,0,.8,.3}
+
 
 %%Stile per codice
 
-\lstdefinestyle{customjava}{
-  	language=Java,
-  	frame=tlrb,
-  	aboveskip=3mm,
-  	belowskip=6mm,
-  	showstringspaces=false,
-  	columns=flexible,
-  	basicstyle={\small\ttfamily},
-  	numbers=left,
-    numberstyle=\tiny\color{orange}\ttfamily,
-    numbersep=5pt,
-  	keywordstyle=\color{purple},
-  	commentstyle=\color{orange},
-  	stringstyle=\color{blue},
-  	breaklines=true,
-  	breakatwhitespace=true
-  	tabsize=3
-}
+\lstdefinestyle{customphp}{
+  	language        = php,
+	  basicstyle      = \small\ttfamily,
+	  keywordstyle    = \color{dkblue},
+	  stringstyle     = \color{red},
+	  identifierstyle = \color{dkgreen},
+	  commentstyle    = \color{gray},
+	  emph            =[1]{php},
+	  emphstyle       =[1]\color{black},
+	  emph            =[2]{if,and,or,else},
+	  emphstyle       =[2]\color{dkyellow},
+    keywords    = {__halt_compiler,    abstract,   and,    array,
+                    as, break,  callable,   case,   catch,  class,
+                    clone,  const,  continue,   declare,    default,
+                    die,    do, echo,   else,   elseif,
+                    empty,  enddeclare, endfor, endforeach, endif,
+                    endswitch,  endwhile,   eval,   exit,   extends,
+                    final,  finally,    for,    foreach,    function,
+                    global, goto, if,   implements, include,
+                    include_once,   instanceof, insteadof,
+                    interface,  isset, list,    namespace,
+                    new,    or, print, private, protected,  public,
+                    require,    require_once, return,   static,
+                    switch, throw,  trait, try, unset, use, var,
+                    while,  xor,    yield,
+  },
+  numbers=left,
+  stepnumber=1,  
+  numberfirstline=true,
+  numberstyle=\footnotesize,
+  xleftmargin=4.0ex,
+  upquote=true,
+  showlines=true}
+
+
 
 
 %% Aggiunge una linea al di sotto di ogni sezione principale
