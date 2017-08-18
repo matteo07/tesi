@@ -24,4 +24,7 @@
 \bibitem{ETICHETTA}
 Autore, ``Titolo,'' \emph{rivista}, vol. 123, no.~19, pp. 463--465, 20qualcosa.
 
+\bibitem{WPWID}
+``Widgets api,'' \url{https://codex.wordpress.org/Widgets_API}.
+
 \end{thebibliography}
