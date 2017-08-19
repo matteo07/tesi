@@ -1,8 +1,11 @@
 missing:
 
+Code:
+- renderedApi
+
 Image:
+- edit tag con prodotti (dynamic nel html wpadmin)  | tag prodotti renderizzato
 
 Link:
-- install wp
 - local lab pro
 - deploy test lab test pro

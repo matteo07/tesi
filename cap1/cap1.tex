@@ -30,7 +30,7 @@ Con buone probabilità verranno aggiunti in futuro nuovi siti verticali per alcu
 di Kirivo.
 
 \section{Architettura del Kirivo Network}
-Per l'erogazione dei siti del Kirivo network vengono usati diversi server
+Per l'erogazione dei siti del Kirivo network vengono usati diversi server:
 \begin{itemize}
 \item {\bf Hybris}: una piattaforma Enterprise di e-commerce scritta in Java che offre una soluzione all-in-one per i siti 
 di e-commerce comprendendo servizi quali la gestione del catalogo dei prodotti, degli utenti e la 
@@ -40,18 +40,24 @@ principalmente per velocizzare i tempi di sviluppo in fase iniziale.
 Hybris utilizza una database relazione Postgres e il suo cataologo viene indicizzato dal motore di ricerca SolR.
 
 \item {\bf SolR}: un motore di ricerca scritto in Java che permette di indicizzare i prodotti presenti a catalogo per una accesso
-più rapido, permette inoltre di filtrare in modo efficente i prodotti presenti a catalogo ottimizzando
+più rapido.
+
+Permette inoltre di filtrare in modo efficente i prodotti presenti a catalogo ottimizzando
 le ricerche per categorie o caratteristiche del prodotto.
-\item {\bf Kitty}: un server di backend in Ruby, attualmente si sta lavorando nel migrare gradualmente tutte le funzionalità
+\item {\bf Kitty}: server di backend Ruby.
+
+Attualmente si sta lavorando nel migrare gradualmente tutte le funzionalità
 di Hybris in Kitty in modo da non aver più bisogno in futuro della piattaforma di e-commerce.
 \item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris, Solr e Kitty utilizzando i loro
 servizi di backend. 
 \item {\bf Wordpress}: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
 
 Il server di Wordpress si trova nella LAN aziendale e si interfaccia solamente con il server Kiruby, la sua
-presenza è nascosta agli utentu finali.
-\item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni
-e viene usato da Kiruby come cache di contenuti, specialmente per le richieste di Kiruby a Wordpress 
+presenza è nascosta agli utenti finali.
+\item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni.
+
+Viene usato da Kiruby come cache di contenuti, specialmente per le richieste di Kiruby a Wordpress.
+
 \item {\bf Nginx}: un Reverse proxy usato per redirigere le chiamate fatte ai domini \url{www.kirivo.it} 
 e \url{www.origini.it} ai server opportuni.
 \end{itemize}
@@ -64,8 +70,8 @@ Lo sviluppo è l manutenzione dei siti del Kirivo Network viene effettuato da pi
 \item {\bf Team Iguana}: si occupano dello sviluppo di Kiruby.
 \item {\bf Team Nimbus}: si occupano dello svliuppo di Hybris SolR e Kitty.
 \item {\bf Content Manager}: si occupano della comunicazione con i venditori, della gestione dei prodotti a catologo
- e della creazione di pagine di speciali, lavorano interfacciandosi con Hybris e Wordpress
-\item {\bf Grafica}: lavora o direttamente su Kiruby o da al team Iguana grafiche Html che vengono poi rese dinamiche 
+ e della creazione di pagine di speciali, lavorano interfacciandosi con Hybris e Wordpress.
+\item {\bf Grafica}: lavora o direttamente su Kiruby o da al team Iguana grafiche HTML che vengono poi rese dinamiche 
 ed integrate con i vari servizi.
 \end{itemize}
 
@@ -74,33 +80,40 @@ ed integrate con i vari servizi.
 Le homepage di Origini e Kirivo sono le pagine che, nei rispettivi siti, possono cambiare contenuto più 
 frequentemente. Inoltre scegliere quali prodotti, quali offerte e quali contenuti 
 vanno inseriti in homepage non è compito dei programmatori ma dei \emph{content managers},
-quindi si rivela importante dare la possibilità ai content di fare modifiche, come cambiare un prodotto da
+quindi si rivela importante dare la possibilità ai \emph{content} di fare modifiche, come cambiare un prodotto da
 mettere tra quelli in evidenza in homepage, o il testo di un pannello con la cantina del mese senza dover passare 
 dai programmatori per fare modifiche.
 
-Per dare più libertà ai content, il contenuto della homepage, ovvero tutto quello che non è
+Per dare più libertà ai \emph{content}, il contenuto della homepage, ovvero tutto quello che non è
 header e footer, non si trova nel server Kiruby ma in pagine Wordpress che i content possono direttamente 
 modificare accedendo alla sezione admin di Wordpress.
+
 % immagine meta sito metà wp-admin di cantina del mese
 
-Il server Kiruby quando deve visualizzare la home chiede a Wordpress la pagina della home, ne estrae
-il contenuto e lo renderizza, nell'html tra Header e Footer nel caso delle homepage.
+Il server Kiruby quando deve riceve una richiesta per la homepage chiede a Wordpress la sua pagina della home, ne estrae
+il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpress viene incluso nell'HTML tra Header e Footer il cui codice invece resta in Kiruby, in comune a tutte le altre pagine.
+
+% sequence diagram cmsdealer
 
 \section{La gemma cmsdealer}
 Per visualizzare contenuti dinamici, come ad esempio un Box di 4 vini viene utilizzata
 una gemma Ruby chiamata \emph{cmsdealer}.
 
-Questa gemma viene usata dal server Kiruby. Questo mentre scansiona la pagina di Wordpress da includere
-se incontra un tag di nome \emph{cmsdealer} legge l'attributo \emph{type} e in base al valore di questo
-seleziona il corrispondente template, legge l'ID dei prodotti e stampa l'html del box con
+La gemma è necessaria per il fatto che le informazioni dei prodotti non sono accessibili a Wordpress, che viene utilizzato
+come server per la gestione e la modifica di contenuti editoriali, ma sono accessibili a Kiruby che ha al suo interno diversi
+meccanismi per accedere alle informazioni dei prodotti andandosi ad interfacciare con Hybris e SolR.
+
+La gemma \emph{cmsdealer} usata dal server Kiruby scansiona la pagina di Wordpress da includere,
+se incontra un tag di nome \emph{dynamic} ne legge l'attributo \emph{type} e in base al valore di questo
+seleziona il corrispondente template, legge l'ID dei prodotti e sostiusice al tag \emph{dyanmic} l'HTML del box con
 i valori dei prodotti selezionati
 
-Esempio: se nella pagina Wordpress Kiruby trova
+Esempio: se processando la pagina HTML di Wordpress Kiruby trova
 \begin{verbatim}
 	<dynamic type="OriginiListingBox" ids="3422,2345,2872,2209" />
 \end{verbatim}
 allora verrà cercato il template di \emph{originilistingbox.html.erb} e verrà popolato
-coi valori dei prodotti con gli id specificati nell attributo \emph{ids}.
+coi valori dei prodotti con gli identificativi specificati nell attributo \emph{ids}.
 % immagine meta sito metà wp-admin di prodotti in evidenza
 
 \newpage
@@ -108,7 +121,7 @@ coi valori dei prodotti con gli id specificati nell attributo \emph{ids}.
 L'obbiettivo del progetto è quello di rendere l'edit delle pagine
 da parte dei content molto più semplice e flessibile,
 facendo in modo che i contenuti delle homepage possano essere editati visualmente e non
-andando a mettere mano direttamente sul codice html.
+andando a mettere mano direttamente sul codice HTML.
 
 Per farlo i content dovranno interagire con un interfaccia grafica web che permette
 la modifica delle informazioni necessarie e di poter spostare e copiare
@@ -121,7 +134,7 @@ La criticità del sistema è che contiene codice duplicato nella gemma CmsDealer
 e nei widget di Wordpress. 
 
 Per risolvere il problema sono state create le  \emph{RenderdPricesAPI} 
-che restituiscono frammenti di html renderizzato per varie componenti della home.
+che restituiscono frammenti di HTML renderizzato per varie componenti della home.
 
 In questo modo il codice del template resta solamente in Kiruby e esponendo le 
 API questo viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer
