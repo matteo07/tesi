@@ -6,10 +6,10 @@
 \mcchap{Preparazione dell'ambiente di sviluppo per Wordpress}{cap:Preparazione dell'ambiente di sviluppo}
 
 Wordpress, essendo un Content Management System open source, è altamente personalizzabile e dispone
-di un innumerevole quantità di plugin, gratuiti e a pagamento, per ogni tipo di funzionalità.
+di un innumerevole quantità di \emph{plugin}, gratuiti e a pagamento, per ogni tipo di funzionalità.
 
-Al mio arrivo veniva usata un'installazione base di Wordpress con la sola aggiunta di un plugin "Microsoft Azure 
-for Wordpress" che fa in modo che tutte le immagini che vengono caricate dal pannello di admin di Wordpress
+Al mio arrivo veniva usata un'installazione base di Wordpress con la sola aggiunta di un plugin chiamato \emph{Microsoft Azure 
+for Wordpress} che fa in modo che tutte le immagini che vengono caricate dal pannello di admin di Wordpress
 vengono caricate e servite da un server di Microsoft Azure.
 
 Questo serve principalmente, come accennato precedentemente, ad oscurare il dominio del server di Wordpress,
@@ -37,46 +37,55 @@ ma solo un numero ridotto di prodotti fake utili ai fini di testing.
 Per la distribuzione delle modifiche si usa il seguente procedura
 \begin{itemize}
 \item {\bf Sviluppo in locale}: viene editato il codice per aggiungere una nuova funzionalità usando
-TDD, una volta visto in locale che la funzionalità è stata implementata correttamente si passa alla fase successiva
+Test Driven Development, una volta visto in locale che la funzionalità è stata implementata correttamente si passa alla fase successiva
 \item {\bf Test in lab}: le nuove modifiche vengono deploiate in LAB, qui, sfruttando un ambiente simile a quello di 
 produzione, vengono fatti ulteriori controlli, se si riscontra qualche problema si ritorna alla fase precedente e si corregge
 altrimenti si passa alla fase successiva 
 \item {\bf Deploy in produzione}: una volta effettuati i controlli in LAB le modifiche vengono pubblicate sulle macchine
-di produzione e saranno disponibili agli utenti finali, nei minuti successivi si tiene sotto controllo {\bf New Relic}, un
+di produzione e saranno disponibili agli utenti finali. 
+
+Nei minuti successivi si tiene sotto controllo {\bf New Relic}, un
 applicazione di monitoraggio degli errori, per vedere se le modifiche pubblicate fanno generare degli errori inaspettati.
-In caso di errori si fa "rollback" alla versione precedente altrimenti la nuova funzionalità viene considerata pubblicata con successo
+In caso di errori si fa \emph{rollback} alla versione precedente altrimenti la nuova funzionalità viene considerata pubblicata con successo
 \end{itemize}
 
-Prima dei deploy, sia in LAB che in produzione, vengono fatti girare tutti i test, unitari e di integrazione, e il codice viene pubblicato solo se tutti questi sono "verdi".
+Prima dei deploy, sia in LAB che in produzione, vengono fatti girare tutti i test, unitari e di integrazione, e il codice viene pubblicato solo se tutti questi sono \emph{verdi}, ovvero passano correttamente.
 
 \section{Impostazione della macchine di sviluppo}
 
 Prima del mio arrivo il Team Iguana non si occupava dello sviluppo di Wordpress, non era quindi presente
 l'applicazione nelle macchine di sviluppo locale.
 
-è stato mio compito quindi, prima di iniziare a sviluppare, di installare su tutte le macchine di sviluppo
-un istanza di Wordpress, servita dal server Nginx, lo stesso server già presente nelle macchine locali per
+È stato mio compito quindi, prima di iniziare a sviluppare, di installare su tutte le macchine di sviluppo
+un istanza di Wordpress, servita dal server Nginx\cite{NGINX}, lo stesso server già presente nelle macchine locali per
 la reindirizzazione delle chiamate a Kiruby.
 
-è stato poi creata un repository di git per il versionamento di Wordpress. 
-Alla radice della cartella "wordpress" troviamo alcuni file di configurazione e le cartelle "wp-content", "wp-admin", ... di queste solo la
-cartella "wp-content" viene versionata perchè qui troviamo tutti i file rilevanti per la programmazione delle varie funzionalità, mentre nelle
-altre cartelle troviamo file di configurazione e altre funzionalità standard di "wordpress" che non vengono modificati dagli sviluppatori.
+È stata poi creata un repository di git per il versionamento di Wordpress. 
+Alla radice della cartella \emph{wordpress} (vedi Figura \ref{fig:wptree}) troviamo alcuni file di configurazione e le cartelle \emph{wp-content}, \emph{wp-admin} e \emph{wp-includes}\cite{WPDIR} di queste solo la
+cartella \emph{wp-content} viene versionata perchè qui troviamo tutti i file rilevanti per la programmazione delle varie funzionalità, mentre nelle
+altre cartelle troviamo file di configurazione e altre funzionalità standard di \emph{wordpress} che non vengono modificati dagli sviluppatori
+e rimangono intatte in tutte le macchine.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/wpfolder.png}
+  \caption{Contenuto della cartella "wordpress".}
+  \label{fig:wptree}
+\end{figure}
 
 \section{Creazione dello script di deploy}
 Lo script di deploy, essendo tutte la macchine di sviluppo e produzione macchine Linux, è stato scritto in un file eseguibile
-"kirCMS-autodeploy.sh" utilizzando il linguaggio Bash ed utilizza una procedura simile allo script di deploy 
+\emph{kirCMS-autodeploy.sh} utilizzando il linguaggio Bash ed utilizza una procedura simile allo script di deploy 
 utilizzato da Kiruby.
 
 Prima di eseguire il deploy è necessario fare commit sul master della repository di Wordpress in modo da avere i sorgenti git aggiornati.
 
-Una volta committate le modifiche da pubblicare bisogna eseguire lo script "kirCMS-autodeploy.sh" passandogli come argomento
-"lab" o "pro" a seconda della macchina su cui si vuole deploiare.
+Una volta committate le modifiche da pubblicare bisogna eseguire lo script \emph{kirCMS-autodeploy.sh} passandogli come argomento
+\emph{lab} o \emph{pro} a seconda della macchina su cui si vuole deploiare.
 
 Lo script per prima cosa chiede le credenziali di autenticazione, apre un tunnel verso la macchina dove si vuole deploiare e si collega a questo in remoto.
 
-Una volta collegato in remoto viene scaricata da "Gitlab" l'ultima versione committata della repository dentro la cartella /tmp
-della macchina e vengono eseguiti tutti i test di PhpUnit eseguendo lo script "test.sh".
+Una volta collegato in remoto viene scaricata da \emph{Gitlab} l'ultima versione committata della repository dentro la cartella /tmp
+della macchina e vengono eseguiti tutti i test di PhpUnit eseguendo lo script presente all'interno della repository \emph{test.sh}.
 
 Se i test falliscono viene stampato a console un messaggio con lo stack dell'errore e la procedura termina, lasciando invariata
 la versione precedentemente pubblicata.
@@ -85,7 +94,13 @@ Se tutti i test passano la cartella scaricata in /tmp viene spostata dentro word
 utilizzare le ultime modifiche, la precedente cartella wp-content viene rinominata come wp-content-bkp, la precedente cartella wp-content-bkp
 viene eliminata.
 
-La cartella wp-content-bkp serve a tenere ancora disponibile la versione precedente semplificando la precedura per un eventuale rollback. Se vengono individuati degli errori con il nuovo deploy, per ritornare alla situazione precedente è sufficente eliminare la cartella wp-content
+La cartella emph{wp-content-bkp} serve a tenere ancora disponibile la versione precedente semplificando la precedura per un eventuale rollback. 
+
+Se vengono individuati degli errori con il nuovo deploy, per ritornare alla situazione precedente è sufficente eliminare la cartella wp-content
 e rinominare wp-content-bkp in wp-content.
 
-Comando di rollback "/media/www/wordpress. rm wp-content ... mv wp-content-bkp wp-content"
+\begin{verbatim}
+	$ cd /media/www/wordpress 
+	$ rm wp-content && mv wp-content-bkp wp-content
+\end{verbatim}
+\emph{comandi da eseguire a terminale per effettuare rollback alla versione precedente}
