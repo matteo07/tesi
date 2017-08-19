@@ -7,7 +7,6 @@ function getKirivoWidgets() {
     };
     return $res;
 }
-
 function getOriginiWidgets() {
     $res = array();
     foreach(glob( dirname(_FILE_)."/widget-origini/*Widget.php") 
@@ -16,7 +15,6 @@ function getOriginiWidgets() {
     };
     return $res;
 }
-
 function my_register_widgets() {
     foreach(getKirivoWidgets() as $filename) {
         require_once $filename;
@@ -29,5 +27,4 @@ function my_register_widgets() {
             '/widget-origini/','',$filename)));
     };
 }
- 
 add_action( 'widgets_init', 'my_register_widgets' );

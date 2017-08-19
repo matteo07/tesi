@@ -5,11 +5,11 @@
 
 \mcchap{Integrazione Page Builder}{cap:pb}
 
-Per passare ad una gestione più semplice delle pagine da parte dei content
+Per passare ad una gestione più semplice delle pagine da parte dei Content
 mi è stato chiesto di cercare qualche sistema che permettesse una suddivisione
-della pagina in componenti facilmente editabili e riutilizzabili.-
+della pagina in componenti facilmente editabili e riutilizzabili.
 
-Le esigenze erano:
+Le esigenze principali erano:
 \begin{itemize}
 \item modificare il contenuto delle componenti da interfaccia grafica e non 
 editando il codice HTML.
@@ -23,7 +23,9 @@ nella ampia libreria di plugin di Wordpress.
 
 
 Dopo aver analizzato i vari plugin disponibili è stata individuata una soluzione open source chiamata \emph{Page Builder by
-Site Origin} che soddisfava le esigenze.
+Site Origin}\cite{PB} che soddisfava le esigenze.
+
+\section{Page Builder by Site Origin}
 
 Il plugin \emph{Page Builder} permette la suddivisione della pagina in colonne all'interno delle quali
 si possono inserire delle componenti.
@@ -75,8 +77,26 @@ Per far in modo di non dover aggiungere manualmente un Widget al file di inizial
 stato implementato un script di inizializzazione che va all'interno delle cartelle \emph{widget\_orgini} e \emph{widget\_kirivo} e aggiunge tutti
 i Widget che trova all'interno di queste cartelle, per individuare un widget allìinterno della cartella viene fatto pattern-matching per i file che terminano con \emph{Widget.php}.
 
-\newpage
 \lstinputlisting[style=customphp, language=Php]{code/intializeWidget.php}
-
 \emph{Il file initialize\_widget.php}
 
+\newpage
+
+\section{Implementazione Widget}
+Per implementare i Widget necessari per le Homepage sono state isolate le componenti HTML necessarie e per ognuna
+di queste è stato creato un Widget poi , per ognuna di queste è stato create il form per le componenti che potevano essere
+modificate dai Content.
+
+Ci sono due categorie principali di widget
+\begin{itemize}
+\item Widget che non contengono prodotti.
+\item Widget che contengono prodotti.
+\end{itemize}
+
+Per implementare i Widget che non contengono prodotti è stato messo all'interno del metodo \emph{widget} direttamente
+l'HTML di quella componenta con eventuale contenuto dinamico stampato con php.
+
+Per i widget che contengono prodotti invece all'interno di \emph{widget} non è stato inserito il codice HTML con il template
+di ogni prodotto ma è stato messo il tag \emph{dynamic} i cui attributi sono popolati dinamicamente in base al contenuto del form.
+Una volta che il server Kiruby prende una pagina Wordpress e trova il dynamic tag allora provvede a sostituire il tag con le 'tile'
+di tutti i prodotti specificati.
