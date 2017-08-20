@@ -6,24 +6,44 @@
 \mcchap{Fase di formazione aziendale}{cap:agile}
 
 Durante i primi due mesi di tirocinio, la maggior parte del mio tempo è stato speso in formazione,
-il mio studio può essere diviso in tre argomenti principali:
+l'obbiettivo dello studio era di fornirmi le conoscenze adeguate per lavorare nel progetto, in particolare lo studio
+di Wordpress, e per integrarmi al Team Iguana per lo sviluppo e la manutenzione di Kiruby.
 
+
+Il mio studio può essere diviso in tre argomenti principali:
 \begin{itemize}
-\item Tecnologie
+\item Ruby e le sue librerie
+\item Wordpress
 \item Sviluppo agile
 \end{itemize}
 
-Lo studio dei primi due è stato prevalentemente pratico, mentre per lo sviluppo
-agile lo studio è stato in gran parte teorico ma anche pratico
+Lo studio dei primi due è stato prevalentemente pratico, mentre lo studio e l'applicazione
+delle metodologie agili è stato anche in buona parte teorico.
 
-\section{Ruby e suoi framework}
+\section{Ruby e le sue librerie}
 
-All'inizio il linguaggio
+Il primo argomento di studio una volta entrato in azienda è stato il linguaggio \emph{Ruby}, essendo questo il
+linguaggio del web server \emph{Kiruby} la quasi totalità del lavoro del mio Team viene svolto con questo linguaggio.
 
-Poi kata agili (con framework di testing)
+Per lo studio di Ruby mi sono affidato esclusivamente a risorse disponibili online, consigliate dal Team,
+in particolare il sito \url{rubylearning.com}\cite{RUBY}.
 
-Poi redis and co
+In contemporanea a questo ho messo subito in pratica gli argomenti imparati risolvendo i \emph{Koans}\cite{KOANS}
+di Ruby, ovvero una serie di test divisi per argomenti, come ad esempio String, Symbols, Hashes, Regular Expression, 
+che inizialmente falliscono e che vanno sistemati in modo da passare correttamente. Quindi una volta studiato un argomento
+veniva risolto il suo rispettivo \emph{Koan}. 
 
+Una volta presa confidenza con le basi del linguaggio, per prendere maggiore confidenza ho iniziato a sviluppare
+vari Kata agili.
+
+I Kata agili sono dei programmi da sviluppare iterativamente, ovvero prima vengono fornite delle specifiche, una volta 
+implementate se ne aggiungono di nuove o si modificano le precedenti. 
+
+Questo tipo di esercizi serve a far abituare
+lo svilppatore a scrivere codice in modo manutenibile, ovvero in modo che l'aggiunta o il cambiamento di una qualche 
+funzionalità richieda il minimo sforzo grazie alla qualità del codice scritto.
+
+Poi redis and co...........
 
 \section{Wordpress}
 
@@ -34,29 +54,35 @@ Poi redis and co
 
 \section{Sviluppo agile}
 
-In 7Pixel si sviluppo utilizzando metodologie agili, il software viene sviuppato
+In 7Pixel si sviluppa utilizzando metodologie agili, il software viene sviuppato
 iterativamente, nuove feature e aggiornamenti vengono pubblicati quotidianamente.
-Nel periodo di studio 
+Nel periodo di studio le varie esercitazioni sono state effettuate
+utilizzando due metodologie tipiche dello sviluppo agile.
 
-\subsection{TDD}
-Una tecnica rigorosamente usata in azienda è il TDD Test Driven Development ovvero, prima di
-aggiungere una qualsiasi nuova funzionalità si scrive un test che passa solo se 
-quella funzionalità fosse implementata. 
+\begin{itemize}
+\item Test Driven Development
+\item Pair Programming
+\end{itemize}
 
-Dopodichè si cerca nel modo più veloce e semplice possibile di fare passare il test
+\subsection{Test Driven Development}
+Il TDD Test Driven Development è una tecnica utilizzata ovunque in azienda per lo sviluppo, nel TDD
+prima di aggiungere una qualsiasi nuova funzionalità si scrive un test che passerebbe solo se 
+quella funzionalità fosse implementata correttamente. 
 
-Una volta passato il test si fa del refactoring per rendere il codice più leggibile
-e soprattutto manutenibile
+Una volta scritto il test che fallisce si cerca nel modo più veloce e semplice possibile di fare passare il test.
+
+Una volta implementato il codice per far passare il test si fa del refactoring per rendere il codice più leggibile
+e soprattutto manutenibile.
 
 \subsection{Pair Programming}
-Tutti i lavori effettuati su Kiruby sono sempre stati fatti in Pair Programming
-con un membro del team
+Pair Programming significa svlippo in coppia, ovvero due membri del Team lavorano contemporaneamente
+allo stesso codice sulla stessa macchina, utilizzando due schermi speculari, due tastiere e due mouse
 
 Il Pair Programming si rivela molto efficace, perchè si riescono ad evitare molti
-errori "di distrazione" che possono costare caro in termini di tempo e soprattutto
+errori di distrazione che possono costare caro in termini di tempo e soprattutto
 si ha molto spesso la possibilità di confrontarsi con punti di vista diversi che possono
 portare ad un analisi più approfondita del problema e a soluzioni migliori. 
 
 Dal mio punto di vista di apprendista il Pair Programming ha portato inoltre il vantaggio
-di poter lavorare con gente più esperta e quindi, durante il lavoro, di imparare tecniche 
+di poter lavorare con gente più esperta e quindi, durante il lavoro, di imparare tecniche,
 metodologie e "best pracitces" per lo sviluppo.
