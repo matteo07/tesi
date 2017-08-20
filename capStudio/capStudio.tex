@@ -30,10 +30,10 @@ in particolare il sito \url{rubylearning.com}\cite{RUBY}.
 
 In contemporanea a questo ho messo subito in pratica gli argomenti imparati risolvendo i \emph{Koans}\cite{KOANS}
 di Ruby, ovvero una serie di test divisi per argomenti, come ad esempio String, Symbols, Hashes, Regular Expression, 
-che inizialmente falliscono e che vanno sistemati in modo da passare correttamente. Quindi una volta studiato un argomento
+che inizialmente falliscono e che vanno sistemati in modo da passare correttamente. Quindi una volta studiato un certo argomento
 veniva risolto il suo rispettivo \emph{Koan}. 
 
-Una volta presa confidenza con le basi del linguaggio, per prendere maggiore confidenza ho iniziato a sviluppare
+Una volta apprese le basi del linguaggio, per prendere maggiore confidenza ho iniziato a sviluppare
 vari Kata agili.
 
 I Kata agili sono dei programmi da sviluppare iterativamente, ovvero prima vengono fornite delle specifiche, una volta 
@@ -43,9 +43,25 @@ Questo tipo di esercizi serve a far abituare
 lo svilppatore a scrivere codice in modo manutenibile, ovvero in modo che l'aggiunta o il cambiamento di una qualche 
 funzionalità richieda il minimo sforzo grazie alla qualità del codice scritto.
 
-Poi redis and co...........
+Oltre alle basi del linguaggio ed ai Kata agili ho studiato anche l'utilizzo di alcune \emph{gemme} (così vengono chiamate le 
+librerie Ruby) che vengono
+usate frequentemente in Kiruby tra cui Test-Unit come framework di testing, librerie per l'integrazione
+con SolR e Redis e librerie per lo scambio di dati JSON attraverso HTTP come \emph{HTTPParty}.
 
 \section{Wordpress}
+
+Parallelamente allo studio di Ruby mi sono dedicato allo studio di Wordpress.
+
+Wordpress è il Content Managemente System più diffuso al mondo, è un applicazione web scritta in PHP
+che deve essere servita da un web-server, solitamente Apache, nel nostro caso Nginx.
+
+Nella fase di studio mi sono concentrate nell'analizzare e studiare come è struttrata l'applicazione
+e dove un programmatore deve mettere mano per fare modifiche e personalizzare la propria installazione.
+
+Oltre allo studio di Wordpress ho fatto un approfondimento del linguaggio PHP del quale avevo qualche
+nozione ed esperienza di utilizzo, non troppo approfondita, già prima del mio arrivo. 
+
+
 
 
 %-------------------------------------------------------------
@@ -72,7 +88,7 @@ quella funzionalità fosse implementata correttamente.
 Una volta scritto il test che fallisce si cerca nel modo più veloce e semplice possibile di fare passare il test.
 
 Una volta implementato il codice per far passare il test si fa del refactoring per rendere il codice più leggibile
-e soprattutto manutenibile.
+e soprattutto manutenibile, cercando di eliminare il più possibile la presenza di codice duplicato.
 
 \subsection{Pair Programming}
 Pair Programming significa svlippo in coppia, ovvero due membri del Team lavorano contemporaneamente
@@ -85,4 +101,15 @@ portare ad un analisi più approfondita del problema e a soluzioni migliori.
 
 Dal mio punto di vista di apprendista il Pair Programming ha portato inoltre il vantaggio
 di poter lavorare con gente più esperta e quindi, durante il lavoro, di imparare tecniche,
-metodologie e "best pracitces" per lo sviluppo.
+metodologie e \emph{best pracitces} per lo sviluppo.
+
+\subsection{Studio teorico}
+Oltre alla messa in pratica delle tecniche di sviluppo agile sono stati anche effettuati studi teorici
+su le come sviluppare codice pulito e manutenibile.
+
+Gli argomenti principali sono stati:
+\begin{itemize}
+\item Studio dei principali design pattern, tra cui i pattern GRASP e SOLID.
+\item Metodologie di refactoring.
+\item Metodologie per mantenere il codice ordinato e leggibile.
+\end{itemize}
