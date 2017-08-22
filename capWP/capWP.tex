@@ -160,7 +160,7 @@ echo "=== switch WP-CONTENT and create WP_CONTENT_BKP ==="
 ssh -C -l root -p 20059 -o UserKnownHostsFile=/dev/null -o \
 StrictHostKeyChecking=no -R 8765:192.168.254.140:22 localhost \ 
 -i /home/xpuser/shoppydoo/kiruby/key.ssh -t << HERE
-	#ESEGUE IN REMOTO
+    #ESEGUE IN REMOTO
     cd /media/www/wordpress; bash --login
     tar -xzf ${TARFILE}
     [ -d $WP_CONTENT_BKP ] && rm -rf $WP_CONTENT_BKP
@@ -177,7 +177,7 @@ StrictHostKeyChecking=no -R 8765:192.168.254.140:22 localhost \
         echo '${RED_COLOR}Tests not passed!! :(';
         cat $LOGFILE; echo '${RESET_COLOR}';
         rm -rf $WP_CONTENT && mv $WP_CONTENT_BKP \
-        $WP_CONTENT;
+        $WP_CONTENT;    
     fi
 HERE
     echo "${GREEN_COLOR} Success, CMS is online!${RESET_COLOR}"
