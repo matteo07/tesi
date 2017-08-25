@@ -139,27 +139,53 @@ Esempio: se processando la pagina HTML di Wordpress Kiruby trova
 allora verrà cercato il template di \emph{originilistingbox.html.erb} e verrà popolato
 coi valori dei prodotti con gli identificativi specificati nell attributo \emph{ids}.
 
-% immagine meta sito metà wp-admin di prodotti in evidenza
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/sms-html.png}
+  \caption{L'interfaccia visualizzata dai content managers per modificare un listing di prodotti.}
+  \label{fig:smshtml}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/sms-render.png}
+  \caption{Risultato renderizzato della componente compilata in figura \ref{fig:smshtml}.}
+  \label{fig:smsrender}
+\end{figure}
+
 
 \newpage
+
 \section{Obbiettivo}
 L'obbiettivo del progetto è quello di rendere l'edit delle pagine
 da parte dei content molto più semplice e flessibile,
 facendo in modo che i contenuti delle homepage possano essere editati visualmente e non
-andando a mettere mano direttamente sul codice HTML.
+andando a mettere mano direttamente sul codice HTML (vedi figure \ref{fig:meseform} e \ref{fig:smsform}).
 
 Per farlo i content dovranno interagire con un interfaccia grafica web che permette
 la modifica delle informazioni necessarie e di poter spostare e copiare
 componenti della home con un click o con un drag and drop.
 
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/wform.png}
+  \caption{Come dovrebbe essere editata la componente in figura \ref{fig:wrender}.}
+  \label{fig:meseform}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/sms-form.png}
+  \caption{Come dovrebbe essere editata la componente in figura \ref{fig:smsrender}.}
+  \label{fig:smsform}
+\end{figure}
+
 \section{Obbiettivo secondario}
 Obbiettivo secondario del progetto e di rendere il sito più manutenibile.
 
-La criticità del sistema è che contiene codice duplicato nella gemma CmsDealer, in Kiruby
+La criticità del sistema è che contiene codice duplicato di componenti HTML nella gemma CmsDealer, in Kiruby
 e nei widget di Wordpress. 
 
 Per risolvere il problema sono state create le  \emph{RenderdPricesAPI} 
-che restituiscono frammenti di HTML renderizzato per varie componenti della home.
+che restituiscono frammenti di HTML renderizzato per le varie componenti della home che contengono prodotti.
 
 In questo modo il codice del template resta solamente in Kiruby e esponendo le 
-API questo viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer
+API questo viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer.
