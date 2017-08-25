@@ -44,10 +44,7 @@ più rapido.
 
 Permette inoltre di filtrare in modo efficente i prodotti presenti a catalogo ottimizzando
 le ricerche per categorie o caratteristiche del prodotto.
-\item {\bf Kitty}: server di backend Ruby.
 
-Attualmente si sta lavorando nel migrare gradualmente tutte le funzionalità
-di Hybris in Kitty in modo da non aver più bisogno in futuro della piattaforma di e-commerce.
 \item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris, Solr e Kitty utilizzando i loro
 servizi di backend. 
 \item {\bf Wordpress}: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
@@ -62,7 +59,14 @@ Viene usato da Kiruby come cache di contenuti, specialmente per le richieste di 
 e \url{www.origini.it} ai server opportuni.
 \end{itemize}
 
-%%%%%%%%%%%%%%%% SUPER GRAFICO DIDDIO.jpg
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/arch.png}
+  \caption{Schema dell'architettura del Kirivo Network.}
+  \label{fig:kn}
+\end{figure}
+
+
+\newpage
 
 \section{I team del Kirivo Network}
 Lo sviluppo è l manutenzione dei siti del Kirivo Network viene effettuato da più team e questi sono:
@@ -88,12 +92,32 @@ Per dare più libertà ai \emph{content}, il contenuto della homepage, ovvero tu
 header e footer, non si trova nel server Kiruby ma in pagine Wordpress che i content possono direttamente 
 modificare accedendo alla sezione admin di Wordpress.
 
-% immagine meta sito metà wp-admin di cantina del mese
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/whtml.png}
+  \caption{L'interfaccia visualizzata dai content managers per modificare la pagina.}
+  \label{fig:whtml}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/wrender.png}
+  \caption{Risultato renderizzato della componente compilata in figura \ref{fig:whtml}.}
+  \label{fig:wrender}
+\end{figure}
+
+
+\newpage
 
 Il server Kiruby quando deve riceve una richiesta per la homepage chiede a Wordpress la sua pagina della home, ne estrae
 il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpress viene incluso nell'HTML tra Header e Footer il cui codice invece resta in Kiruby, in comune a tutte le altre pagine.
 
-% sequence diagram cmsdealer
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/homeseq.png}
+  \caption{Funzionamento della richiesta della homepage.}
+  \label{fig:homeseq}
+\end{figure}
+
+
 
 \section{La gemma cmsdealer}
 Per visualizzare contenuti dinamici, come ad esempio un Box di 4 vini viene utilizzata
@@ -114,6 +138,7 @@ Esempio: se processando la pagina HTML di Wordpress Kiruby trova
 \end{verbatim}
 allora verrà cercato il template di \emph{originilistingbox.html.erb} e verrà popolato
 coi valori dei prodotti con gli identificativi specificati nell attributo \emph{ids}.
+
 % immagine meta sito metà wp-admin di prodotti in evidenza
 
 \newpage

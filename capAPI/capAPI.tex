@@ -25,7 +25,7 @@ Per risolvere questa problema è stato deciso di implementare nel server Kiruby 
 ritorna l'HTML con tutte le schede prodotto ed eventuali intestazioni.
 
 Queste API poi vengono chiamate da Wordpress che riceve subito l'HTML e lo renderizza immediatamente,
-le stesse API vengono anche chiamate da \emph{cms\_dealer} per renderizzare i tag \emph{dynamic}.
+le stesse API vengono anche chiamate da \emph{cms\_dealer} per sostiture i tag \emph{dynamic}.
 
 Per spiegare il meccanismo delle rendered API prendiamo in considerazione il meccanismo utilizzato per il widget
 \emph{Origini - Slider Prodotti}.
@@ -75,10 +75,13 @@ a quale rotta il Widget deve fare la chiamata ed eventualmente aggiungere campi 
 
 Ad esempio il codice del Widget \emph{Origini - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo scopri altro e sottotitolo sarà:
 
-\begin{lstlisting}[style=customphp, language=Php,caption={I metodi widget \emph{composeUrl} e \emph{iguanaApiRoute} di \emph{ProductsWidget}}] 
+\begin{lstlisting}[style=customphp, language=Php,caption={Viene sovrascritto \emph{iguanaApiRoute} da \emph{ProductsWidget} per specificare la chiamata da effettuare}] 
 function iguanaApiRoute() {
     return 'rendered_box_prices';
 }
+\end{lstlisting}
+
+\begin{lstlisting}[style=customphp, language=Php,caption={Ridefinendo \emph{composeUrl} vengono aggiunti ulteriori campi specifici del Widget \emph{ProductsWidget}}] 
 
 function composeUrl($instance) {
     $api_request = parent::composeUrl($instance);
@@ -88,7 +91,6 @@ function composeUrl($instance) {
     if(!is_null($instance['scopri-link'])) {
         $api_request .= "&link=". urlencode($instance['scopri-link']);
     }
-
     return $api_request;
 }
 \end{lstlisting}
