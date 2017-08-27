@@ -2,6 +2,11 @@ missing:
 
 Code:
 - renderedApi
+- widget cantina del mese
+- widget che fa rendered api
+- interfaccia page-builder senza api
+- interfaccia page-builder con api
+
 
 Image:
 - edit tag con prodotti (dynamic nel html wpadmin)  | tag prodotti renderizzato
@@ -15,3 +20,6 @@ Capitoli:
 - renderedAPI
 - risultato finale
 - futuri sviluppi
+
+
+

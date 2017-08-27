@@ -84,8 +84,7 @@ i Widget che trova all'interno di queste cartelle, per individuare un widget all
 
 \section{Implementazione Widget}
 Per implementare i Widget necessari per le Homepage sono state isolate le componenti HTML necessarie e per ognuna
-di queste è stato creato un Widget poi , per ognuna di queste è stato create il form per le componenti che potevano essere
-modificate dai Content.
+di queste è stato creato un Widget poi, per ognuna di queste è stato creato il suo form per editare le componenti necessarie.
 
 Ci sono due categorie principali di widget
 \begin{itemize}
@@ -96,7 +95,12 @@ Ci sono due categorie principali di widget
 Per implementare i Widget che non contengono prodotti è stato messo all'interno del metodo \emph{widget} direttamente
 l'HTML di quella componenta con eventuale contenuto dinamico stampato con php.
 
+.....cantina del mese widget codice
+
 Per i widget che contengono prodotti invece all'interno di \emph{widget} non è stato inserito il codice HTML con il template
 di ogni prodotto ma è stato messo il tag \emph{dynamic} i cui attributi sono popolati dinamicamente in base al contenuto del form.
 Una volta che il server Kiruby prende una pagina Wordpress e trova il dynamic tag allora provvede a sostituire il tag con le 'tile'
 di tutti i prodotti specificati.
+
+
+.....codice widget che stampa dynamic tag

@@ -5,13 +5,13 @@
 
 \mcchap{API rendered prices}{cap:api}
 
-Una volta implementati i vari Widget delle componenti in homepage le specifiche di poter
+Una volta implementati i vari Widget delle componenti delle homepage le specifiche di poter
 modificare il contenuto delle componenti da interfaccia grafica e senza editare
 il codice HTML, di poter creare copie delle componenti già create, e di poter spostare
 semplicemente con drag and drop le varie componenti risultavano soddisfatte.
 
-L'uncio problema rimanente dunque era quello di avere un feedback visivo immediato mentre si edita
-la pagina.
+L'uncio problema rimanente dunque era quello di avere un feedback visivo immediato mentre
+la pagina viene editata.
 
 Il feedback visivo era già presente per quelle componenti senza prodotti il cui HTML risiedeva in Wordpress,
 per le componenti che fanno uso di prodotti invece l'utente che usava Wordpress non vedeva niente renderizzato.
@@ -21,23 +21,23 @@ questi compaiono solo una volta che la pagina Wordpress viene processata da Kiru
 lo sostituisce con l'HTML.
 
 Per risolvere questa problema è stato deciso di implementare nel server Kiruby delle API chiamate
-\emph{rendered\_API} che fatte delle richieste con gli ID dei prodotti e altri parametri come titolo e descrizione
+\emph{renderedAPI} che fatte delle richieste con gli ID dei prodotti e altri parametri come titolo e descrizione
 ritorna l'HTML con tutte le schede prodotto ed eventuali intestazioni.
 
 Queste API poi vengono chiamate da Wordpress che riceve subito l'HTML e lo renderizza immediatamente,
 le stesse API vengono anche chiamate da \emph{cms\_dealer} per sostiture i tag \emph{dynamic}.
 
 Per spiegare il meccanismo delle rendered API prendiamo in considerazione il meccanismo utilizzato per il widget
-\emph{Origini - Slider Prodotti}.
+\emph{Origini - Slider Prodotti} (vedi figura \ref{fig:smsrender}).
 
 Altri Widgets come \emph{Origini - Slider Accessori}, \emph{Kirivo - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
 utilizzano un meccanismo praticamento identico ma utilizzano differenti template HTML.
 
 \section{Creazione chiamata in Wordpress}
-Inanzitutto per tutti quei Widget che fanno chiamate alle API è stata creata una superclasse PHP comune chiamata
+Inanzitutto per tutti quei Widget che fanno chiamate alle API è stata creata una superclasse PHP chiamata
 \emph{AbstractProductWid}.
 Qui nel metodo \emph{widget}, che stampa l'HTML del Widget, viene stampato il contentuo che si riceve facendo la chiamata alle
-API. Questa chiamata viene composta con il metodo \emph{composeUrl}.
+API. L'indirizzo a cui viene fatta la chiamata viene composta con il metodo \emph{composeUrl}.
 
 \begin{lstlisting}[style=customphp, language=Php,caption={I metodi widget e \emph{callApiAndRender} di \emph{AbstractProductWid}}] 
 function widget($args, $instance){
@@ -71,7 +71,8 @@ function composeUrl($instance) {
 \end{lstlisting}
 
 Le classi che estendono \emph{AbstractProductWid} poi devono definire il metodo \emph{iguanaApiRoute} che specifica
-a quale rotta il Widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata sovrascrivendo \emph{callApiAndRender}.
+a quale rotta il Widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata sovrascrivendo \emph{callApiAndRender} con la 
+chiamata al metodo \emph{composeUrl} della superclasse come prima istruzione.
 
 Ad esempio il codice del Widget \emph{Origini - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo scopri altro e sottotitolo sarà:
 
@@ -127,7 +128,7 @@ end
 La risposta di una sottoclasse di \emph{AbstractRoute} viene implementata nel metodo \emph{response\_hash}, le rotte restiscono un JSON
 così strutturato:
 \begin{verbatim}
-{rendered_html: "<section>.....</section>"}
+{rendered_html: "<section>....(conenuto html da renderizzare)..</section>"}
 \end{verbatim}
 
 \begin{lstlisting}[language=Ruby,caption={Il metodo \emph{response\_hash} dove viene creato il JSON da restituire}] 
@@ -145,7 +146,7 @@ session.filter_by_code(product_ids).get_results
 \end{verbatim}
 e il contentuo restituito dal JSON viene fornito chiamando il metodo \emph{rendered\_html}.
 
-\begin{lstlisting}[language=Ruby,caption={Il metodo \emph{rendered\_html} restituisce il contenuto dell'erb compilato con i parametri passati nel FileTemplate.for\_origin}] 
+\begin{lstlisting}[language=Ruby,caption={Il metodo \emph{rendered\_html} restituisce il contenuto dell'erb compilato con i parametri passati con la chiamata FileTemplate.for\_origin}] 
 def rendered_html(prices, title, subtitle, link)
   FileTemplate.for_origini('origini_products_box.erb', 
     OpenStruct.new({products: prices, title: URI.decode(title))
