@@ -28,9 +28,9 @@ Queste API poi vengono chiamate da Wordpress che riceve subito l'HTML e lo rende
 le stesse API vengono anche chiamate da \emph{cms\_dealer} per sostiture i tag \emph{dynamic}.
 
 Per spiegare il meccanismo delle rendered API prendiamo in considerazione il meccanismo utilizzato per il widget
-\emph{Origini - Slider Prodotti} (vedi figura \ref{fig:smsrender}).
+\emph{Kirivo - Slider Prodotti} (vedi figura \ref{fig:smsrender}).
 
-Altri Widgets come \emph{Origini - Slider Accessori}, \emph{Kirivo - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
+Altri Widgets come \emph{Origini - Slider Accessori}, \emph{Origini - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
 utilizzano un meccanismo praticamento identico ma utilizzano differenti template HTML.
 
 \section{Creazione chiamata in Wordpress}
@@ -222,4 +222,9 @@ compila l'erb \emph{products\_template.erb}.
 </div>
 \end{lstlisting}
 
+\newpage
 \section{Creazione chiamata in cmsdealer}
+
+Così facendo tutti i requisiti del progetto risultano soddisfatti.
+Nei due capitoli successivi vengono elencati i Widget creati per i due siti, specificando
+quali valori sono stati resi personalizzabili.
