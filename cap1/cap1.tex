@@ -5,7 +5,8 @@
 
 \mcchap{Introduzione}{cap:intro}
 
-Nel periodo di apprendistato in 7Pixel sono stato assegnato al team Iguana, team che si occupa
+Il progetto in discussione è stato sviluppato durante il periodo di  alto apprendistato presso 7Pixel,
+dove sono stato assegnato al team Iguana, team che si occupa
 della gestione principalmente front-end dei siti del \emph{Kirivo Network}
 
 \section{Il Kirivo Network}
@@ -49,7 +50,7 @@ le ricerche per categorie o caratteristiche del prodotto.
 servizi di backend. 
 \item {\bf Wordpress}: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
 
-Il server di Wordpress si trova nella LAN aziendale e si interfaccia solamente con il server Kiruby, la sua
+Il server di Wordpress si trova nella LAN aziendale ed è accessibile solamente con dall server Kiruby, la sua
 presenza è nascosta agli utenti finali.
 \item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni.
 
@@ -123,7 +124,7 @@ il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpres
 Per visualizzare contenuti dinamici, come ad esempio un Box di 4 vini viene utilizzata
 una gemma Ruby chiamata \emph{cmsdealer}.
 
-La gemma è necessaria per il fatto che le informazioni dei prodotti non sono accessibili a Wordpress, che viene utilizzato
+La gemma è necessaria per il fatto che le informazioni dei prodotti, come nome del venditore, prezzo, spese di spedizione ecc... non sono accessibili a Wordpress, che viene utilizzato
 come server per la gestione e la modifica di contenuti editoriali, ma sono accessibili a Kiruby che ha al suo interno diversi
 meccanismi per accedere alle informazioni dei prodotti andandosi ad interfacciare con Hybris e SolR.
 
@@ -134,9 +135,9 @@ i valori dei prodotti selezionati
 
 Esempio: se processando la pagina HTML di Wordpress Kiruby trova
 \begin{verbatim}
-	<dynamic type="OriginiListingBox" ids="3422,2345,2872,2209" />
+	<dynamic type="KirivoListingBox" ids="3422,2345,2872,2209" />
 \end{verbatim}
-allora verrà cercato il template di \emph{originilistingbox.html.erb} e verrà popolato
+allora verrà cercato il template di \emph{kirivolistingbox.html.erb} e verrà popolato
 coi valori dei prodotti con gli identificativi specificati nell attributo \emph{ids}.
 
 

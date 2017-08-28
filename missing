@@ -6,7 +6,7 @@ Code:
 - widget che fa rendered api
 - interfaccia page-builder senza api
 - interfaccia page-builder con api
-
+- test.sh
 
 Image:
 - edit tag con prodotti (dynamic nel html wpadmin)  | tag prodotti renderizzato
@@ -17,9 +17,7 @@ Link:
 - clean code, refactoring
 
 Capitoli:
-- renderedAPI
-- risultato finale
-- futuri sviluppi
+- chiamata API cmsdealer
 
-
-
+TUTTO 
+- widget kirivo listing

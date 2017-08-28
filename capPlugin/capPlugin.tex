@@ -47,7 +47,7 @@ personalizzati.
 Per creare un widget bisogna implementare una sottoclasse di WpWidget\cite{WPWID}
 e sovrascrivere il metodo \emph{widget} dove viene restituito il contenuto HTML che la pagina deve restituire quando quel widget viene incluso
 e, se si vuole del contenuto dinamico, bisogna sovrascrivere \emph{form} dove viene creato il form HTML che verrà visualizzato dai content per modificare le
-parti dinamiche della componenti utilizzato da \emph{innin}.
+parti dinamiche della componenti	.
 
 Le componenti compilate nel form vengono poi utilizzate dal metodo \emph{widget}.
 
@@ -73,14 +73,17 @@ Le componenti compilate nel form vengono poi utilizzate dal metodo \emph{widget}
 Per inizializzare i Widget bisogna aggiungere una action\cite{WPACTION}, ovvero un meccanismo offerto da Wordpress per aggiungere dei comportamenti
 prestabiliti,  chiamata \emph{init\_widget} dove viene aggiunto ogni Widget creato.
 
+La sintassi per aggiungere un action in wordpress è la seguente
+\begin{verbatim}
+add_action('nome_action','nome_della_funzione_implementata')
+\end{verbatim}
+
 Per far in modo di non dover aggiungere manualmente un Widget al file di inizializzazione ogni volta che se ne crea uno nuovo, è
 stato implementato un script di inizializzazione che va all'interno delle cartelle \emph{widget\_orgini} e \emph{widget\_kirivo} e aggiunge tutti
 i Widget che trova all'interno di queste cartelle, per individuare un widget allìinterno della cartella viene fatto pattern-matching per i file che terminano con \emph{Widget.php}.
 
 \lstinputlisting[style=customphp, language=Php]{code/intializeWidget.php}
 \emph{Il file initialize\_widget.php}
-
-\newpage
 
 \section{Implementazione Widget}
 Per implementare i Widget necessari per le Homepage sono state isolate le componenti HTML necessarie e per ognuna

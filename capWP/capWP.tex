@@ -82,19 +82,22 @@ Prima di eseguire il deploy è necessario fare commit sul master della repositor
 Una volta committate le modifiche da pubblicare bisogna eseguire lo script \emph{kirCMS-autodeploy.sh} passandogli come argomento
 \emph{lab} o \emph{pro} a seconda della macchina su cui si vuole deploiare.
 
-Lo script per prima cosa chiede le credenziali di autenticazione, apre un tunnel verso la macchina dove si vuole deploiare e si collega a questo in remoto.
+Lo script per prima cosa chiede le credenziali di autenticazione, apre un tunnel verso la macchina dove si vuole deploiare, scarica l'ultima
+versione zippata della repository e la invia alla macchina collegata.
 
-Una volta collegato in remoto viene scaricata da \emph{Gitlab} l'ultima versione committata della repository dentro la cartella /tmp
-della macchina e vengono eseguiti tutti i test di PhpUnit eseguendo lo script presente all'interno della repository \emph{test.sh}.
+Una volta collegato in remoto alla macchina su cui di deve deploiare viene dezippata la repository e rinominata come \emph{wp-content}, mentre
+quella che precedentemente si chiamava \emph{wp-content} viene rinominata \emph{wp-content-bkp} e quella che era \emph{wp-content-bkp}
+viene cancellata.
+Dentro\emph{wp-content} vengono eseguiti tutti i test di PhpUnit, eseguendo lo script presente all'interno della repository chiamato \emph{test.sh}.
 
-Se i test falliscono viene stampato a console un messaggio con lo stack dell'errore e la procedura termina, lasciando invariata
+Se i test falliscono viene stampato a console un messaggio con lo stack dell'errore, \emph{wp-content} viene cancellata e \emph{wp-content-bkp}
+viene rinominata in \emph{wp-content}. In questo modo la procedura termina, lasciando online
 la versione precedentemente pubblicata.
 
-Se tutti i test passano la cartella scaricata in /tmp viene spostata dentro wordpress col nome wp-content e il server inizierà a
-utilizzare le ultime modifiche, la precedente cartella wp-content viene rinominata come wp-content-bkp, la precedente cartella wp-content-bkp
-viene eliminata.
+Se tutti i test passano invece la procedura termina e il server inizierà a
+utilizzare le ultime modifiche.
 
-La cartella emph{wp-content-bkp} serve a tenere ancora disponibile la versione precedente semplificando la precedura per un eventuale rollback. 
+La cartella \emph{wp-content-bkp} dove troviamo la precedente versione pubblicata serve a tenere quest'ultima ancora disponibile semplificando la precedura per un eventuale rollback. 
 
 Se vengono individuati degli errori con il nuovo deploy, per ritornare alla situazione precedente è sufficente eliminare la cartella wp-content
 e rinominare wp-content-bkp in wp-content.

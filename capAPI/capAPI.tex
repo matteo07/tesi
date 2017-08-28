@@ -74,7 +74,7 @@ Le classi che estendono \emph{AbstractProductWid} poi devono definire il metodo 
 a quale rotta il Widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata sovrascrivendo \emph{callApiAndRender} con la 
 chiamata al metodo \emph{composeUrl} della superclasse come prima istruzione.
 
-Ad esempio il codice del Widget \emph{Origini - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo scopri altro e sottotitolo sarà:
+Ad esempio il codice del Widget \emph{Kirivo - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo scopri altro e sottotitolo sarà:
 
 \begin{lstlisting}[style=customphp, language=Php,caption={Viene sovrascritto \emph{iguanaApiRoute} da \emph{ProductsWidget} per specificare la chiamata da effettuare}] 
 function iguanaApiRoute() {
@@ -146,9 +146,9 @@ session.filter_by_code(product_ids).get_results
 \end{verbatim}
 e il contentuo restituito dal JSON viene fornito chiamando il metodo \emph{rendered\_html}.
 
-\begin{lstlisting}[language=Ruby,caption={Il metodo \emph{rendered\_html} restituisce il contenuto dell'erb compilato con i parametri passati con la chiamata FileTemplate.for\_origin}] 
+\begin{lstlisting}[language=Ruby,caption={Il metodo \emph{rendered\_html} restituisce il contenuto dell'erb compilato con i parametri passati con la chiamata FileTemplate.for\_kirivo}] 
 def rendered_html(prices, title, subtitle, link)
-  FileTemplate.for_origini('origini_products_box.erb', 
+  FileTemplate.for_kirivo('kirivo_products_box.erb', 
     OpenStruct.new({products: prices, title: URI.decode(title))
 end
 \end{lstlisting}
@@ -164,7 +164,7 @@ compila l'erb \emph{products\_template.erb}.
 
   <div class="row small-up-1 medium-up-3 large-up-4" data-equalizer="box_offer_height">
     <% products.each do |product| %>
-        <%= FileTemplate.for_origini('product_template.erb', {price: product}) %>
+        <%= FileTemplate.for_kirivo('product_template.erb', {price: product}) %>
     <% end %>
   </div>
 </section>
