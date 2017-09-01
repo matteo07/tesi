@@ -38,7 +38,7 @@ di e-commerce comprendendo servizi quali la gestione del catalogo dei prodotti, 
 gestione sicura dei pagamenti. La scelta di utilizzare una piattaforma di e-commerce a pagamento è stata fatta
 principalmente per velocizzare i tempi di sviluppo in fase iniziale.
 
-Hybris utilizza una database relazione Postgres e il suo cataologo viene indicizzato dal motore di ricerca SolR.
+Hybris utilizza una database relazionale Postgres e il suo catalogo viene indicizzato dal motore di ricerca SolR.
 
 \item {\bf SolR}: un motore di ricerca scritto in Java che permette di indicizzare i prodotti presenti a catalogo per una accesso
 più rapido.
@@ -46,11 +46,11 @@ più rapido.
 Permette inoltre di filtrare in modo efficente i prodotti presenti a catalogo ottimizzando
 le ricerche per categorie o caratteristiche del prodotto.
 
-\item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris, Solr e Kitty utilizzando i loro
+\item {\bf Kiruby}: un web-server Ruby che eroga le pagine web dei siti, si interfaccia con Hybris e Solr utilizzando i loro
 servizi di backend. 
 \item {\bf Wordpress}: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
 
-Il server di Wordpress si trova nella LAN aziendale ed è accessibile solamente con dall server Kiruby, la sua
+Il server di Wordpress si trova nella LAN aziendale ed è accessibile solamente dall server Kiruby, la sua
 presenza è nascosta agli utenti finali.
 \item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni.
 
