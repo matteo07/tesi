@@ -52,7 +52,7 @@ parti dinamiche della componenti	.
 Le componenti compilate nel form vengono poi utilizzate dal metodo \emph{widget}.
 
 
-\lstinputlisting[style=customphp, language=Php]{code/exampleWidget.php}
+\lstinputlisting[style=customphp, basicstyle=\tiny, language=Php]{code/exampleWidget.php}
 \emph{Una semplice implementazione di un widget che stampa un titolo dinamicamente}
 
 
@@ -82,7 +82,7 @@ Per far in modo di non dover aggiungere manualmente un Widget al file di inizial
 stato implementato un script di inizializzazione che va all'interno delle cartelle \emph{widget\_orgini} e \emph{widget\_kirivo} e aggiunge tutti
 i Widget che trova all'interno di queste cartelle, per individuare un widget allìinterno della cartella viene fatto pattern-matching per i file che terminano con \emph{Widget.php}.
 
-\lstinputlisting[style=customphp, language=Php]{code/intializeWidget.php}
+\lstinputlisting[style=customphp, basicstyle=\tiny, language=Php]{code/intializeWidget.php}
 \emph{Il file initialize\_widget.php}
 
 \section{Implementazione Widget}
@@ -98,12 +98,91 @@ Ci sono due categorie principali di widget
 Per implementare i Widget che non contengono prodotti è stato messo all'interno del metodo \emph{widget} direttamente
 l'HTML di quella componenta con eventuale contenuto dinamico stampato con php.
 
-.....cantina del mese widget codice
+
+\begin{lstlisting}[style=customphp, basicstyle=\tiny, language=Php,caption={Codice del widget \emph{Origini - Speciale}}] 
+<?php
+class specialWidget extends WP_Widget {
+  function __construct() {
+    parent::__construct( false, 'Origini - Speciale');
+  }
+
+  function widget( $args, $instance ) {;
+    $image = ! empty( $instance['img-link'] ) ? $instance['img-link'] : '';
+    ?>
+    <section id="hp_editorial_contents" class="bg_white">
+    <div class="row paragraph_vertically_spaced">
+      <div class="small-12 medium-6 columns">
+        <div class="hp_box">
+          <a href="<?php echo $instance['link']?>">
+            <picture class="tile_article_image">
+              <img src="<?php echo $image?>" alt="descrizione dell&#39;immagine">
+            </picture>
+          </a>
+        </div>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <div class="hp_box">
+          <div class="hp_article_box">
+            <h5 class="subheader"><?php echo $instance['subtitle']?></h5>
+            <h3 class="dotted_bordered"><?php echo $instance['title']?></h3>
+            <h4 class="subheader"></h4>
+            <p class="hp_article"><?php echo $instance['description']?></p>
+          </div>
+          <div class="row hp_box_more text-center">
+            <a href="<?php echo $instance['link']?>" class="hollow ">Scopri</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section><?php
+  }
+
+  function form( $instance ) {
+    $title = esc_attr($instance['title']);
+    $image = ! empty( $instance['img-link'] ) ? $instance['img-link'] : '';?>
+    <p><label for="<?php echo $this->get_field_id('subtitle');?>"></label>
+        Sottotitolo: </p><input id="<?php echo $this->get_field_id('subtitle');?>" 
+        	name="<?php echo $this->get_field_name('subtitle');?>" type="text" 
+        	value="<?php echo $instance['subtitle']; ?>" />
+    </p>
+    <p><label for="<?php echo $this->get_field_id('title');?>"></label>
+        Titolo:</p> <input class="required" id="<?php echo $this->get_field_id('title');?>"
+        	name="<?php echo $this->get_field_name('title');?>" type="text" 
+        	value="<?php echo $title; ?>" />
+    </label>
+    <p><label for="<?php echo $this->get_field_id('description');?>"></label>
+        Descrizione:</p> <input id="<?php echo $this->get_field_id('description');?>" 
+        	name="<?php echo $this->get_field_name('description');?>" type="text" 
+        	value="<?php echo $instance['description']; ?>" />
+    </p>
+    <p><label for="<?php echo $this->get_field_id('link');?>"></label>
+        Link:</p> <input class="required" id="<?php echo $this->get_field_id('link');?>" 
+        name="<?php echo $this->get_field_name('link');?>" type="text" 
+        value="<?php echo $instance['link']; ?>" />
+    </p>
+    <p>
+      <label for="<?php echo $this->get_field_id( 'img-link' ); ?>"></label>
+      <input id="<?php echo $this->get_field_id( 'img-link' ); ?>" 
+	      name="<?php echo $this->get_field_name( 'img-link' ); ?>" type="text" 
+	      value="<?php echo esc_url( $image ); ?>" />
+      <button class="upload_image_button button button-primary">
+      	Upload or select image
+      </button>
+    </p>
+    <?php
+  }
+}
+\end{lstlisting}
 
 Per i widget che contengono prodotti invece all'interno di \emph{widget} non è stato inserito il codice HTML con il template
 di ogni prodotto ma è stato messo il tag \emph{dynamic} i cui attributi sono popolati dinamicamente in base al contenuto del form.
 Una volta che il server Kiruby prende una pagina Wordpress e trova il dynamic tag allora provvede a sostituire il tag con le 'tile'
 di tutti i prodotti specificati.
 
-
-.....codice widget che stampa dynamic tag
+\begin{lstlisting}[style=customphp, basicstyle=\tiny, language=Php,caption={La funzione widget di \emph{Origini - Slider prodotti} stampa il dynamic tag che verrà letto da Kiruby e sostituito con l'HTML dei prodotti}] 
+function widget( $args, $instance ) {?>
+  <dynamic type="OriginiHomeSpecialProductsBox" product_ids="<?php echo $instance['ids']?>" 
+    title="<?php echo $instance['title']?>" subtitle="<?php echo $instance['subtitle']?>" 
+    link="<?php echo $instance['scopri-link']?>" no_slack='true' />
+  <?php}
+\end{lstlisting}\

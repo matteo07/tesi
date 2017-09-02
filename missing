@@ -1,11 +1,6 @@
 missing:
 
 Code:
-- renderedApi
-- widget cantina del mese
-- widget che fa rendered api
-- interfaccia page-builder senza api
-- interfaccia page-builder con api
 - test.sh
 
 Image:
@@ -21,3 +16,7 @@ Capitoli:
 
 TUTTO 
 - widget kirivo listing
+
+SURPLUS
+spazio tra intestazione codice e codice
+codice tiny con linea più alta
