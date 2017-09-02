@@ -3,21 +3,17 @@ missing:
 Code:
 - test.sh
 
-Image:
-- edit tag con prodotti (dynamic nel html wpadmin)  | tag prodotti renderizzato
-- form speciale origini
-
-Link:
-- local lab pro
-- deploy test lab test pro
-- clean code, refactoring
-
 Capitoli:
 - chiamata API cmsdealer
 
-TUTTO 
+WIDGETS 
 - widget kirivo listing
+- widget origini accessori
 
 SURPLUS
-spazio tra intestazione codice e codice
-codice tiny con linea più alta
+- spazio tra intestazione codice e codice
+- codice tiny con linea più alta
+	Link:
+	- local lab pro
+	- deploy test lab test pro
+	- clean code, refactoring
