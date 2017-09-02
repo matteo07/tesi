@@ -95,9 +95,14 @@ Ci sono due categorie principali di widget
 \item Widget che contengono prodotti.
 \end{itemize}
 
-Per implementare i Widget che non contengono prodotti è stato messo all'interno del metodo \emph{widget} direttamente
-l'HTML di quella componenta con eventuale contenuto dinamico stampato con php.
+Per implementare i Widget che non contengono prodotti, come ad esempio il widget \emph{Origni - Speciale}, è stato messo all'interno del metodo \emph{widget} direttamente
+l'HTML di quella componente con eventuale contenuto dinamico stampato in php e nel metodo \emph{form} aggiunto l'HTML per gli input necessari.
 
+\begin{figure}
+  \includegraphics[width=\textwidth]{figure/ospec.png}
+  \caption{Contenuto renderizzato dal widget \emph{Origni - Speciale}.}
+  \label{fig:ospec1}
+\end{figure}
 
 \begin{lstlisting}[style=customphp, basicstyle=\tiny, language=Php,caption={Codice del widget \emph{Origini - Speciale}}] 
 <?php
@@ -176,10 +181,10 @@ class specialWidget extends WP_Widget {
 
 Per i widget che contengono prodotti invece all'interno di \emph{widget} non è stato inserito il codice HTML con il template
 di ogni prodotto ma è stato messo il tag \emph{dynamic} i cui attributi sono popolati dinamicamente in base al contenuto del form.
-Una volta che il server Kiruby prende una pagina Wordpress e trova il dynamic tag allora provvede a sostituire il tag con le 'tile'
+Una volta che il server Kiruby prende una pagina Wordpress e trova il dynamic tag allora provvede a sostituire il tag con le \emph{tile}
 di tutti i prodotti specificati.
 
-\begin{lstlisting}[style=customphp, basicstyle=\tiny, language=Php,caption={La funzione widget di \emph{Origini - Slider prodotti} stampa il dynamic tag che verrà letto da Kiruby e sostituito con l'HTML dei prodotti}] 
+\begin{lstlisting}[style=customphp, basicstyle=\tiny, language=Php,caption={Il metodo \emph{widget} di \emph{Origini - Slider prodotti} stampa il dynamic tag che verrà letto da Kiruby e sostituito con l'HTML dei prodotti}] 
 function widget( $args, $instance ) {?>
   <dynamic type="OriginiHomeSpecialProductsBox" product_ids="<?php echo $instance['ids']?>" 
     title="<?php echo $instance['title']?>" subtitle="<?php echo $instance['subtitle']?>" 
