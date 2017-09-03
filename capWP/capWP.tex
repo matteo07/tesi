@@ -8,7 +8,7 @@
 Wordpress, essendo un Content Management System open source, è altamente personalizzabile e dispone
 di un innumerevole quantità di \emph{plugin}, gratuiti e a pagamento, per ogni tipo di funzionalità.
 
-Al mio arrivo veniva usata un'installazione base di Wordpress con la sola aggiunta di un plugin chiamato \emph{Microsoft Azure 
+Al mio arrivo veniva usata un'installazione base di Wordpress, con la sola aggiunta di un plugin chiamato \emph{Microsoft Azure 
 for Wordpress} che fa in modo che tutte le immagini che vengono caricate dal pannello di admin di Wordpress
 vengono caricate e servite da un server di Microsoft Azure.
 
@@ -38,14 +38,13 @@ Per la distribuzione delle modifiche si usa il seguente procedura
 \begin{itemize}
 \item {\bf Sviluppo in locale}: viene editato il codice per aggiungere una nuova funzionalità usando
 Test Driven Development, una volta visto in locale che la funzionalità è stata implementata correttamente si passa alla fase successiva
-\item {\bf Test in lab}: le nuove modifiche vengono deploiate in LAB, qui, sfruttando un ambiente simile a quello di 
+\item {\bf Test in lab}: le nuove modifiche vengono deploiate in LAB, dove, sfruttando un ambiente simile a quello di 
 produzione, vengono fatti ulteriori controlli, se si riscontra qualche problema si ritorna alla fase precedente e si corregge
 altrimenti si passa alla fase successiva 
-\item {\bf Deploy in produzione}: una volta effettuati i controlli in LAB le modifiche vengono pubblicate sulle macchine
+\item {\bf Deploy in produzione}: una volta effettuati i controlli in LAB, le modifiche vengono pubblicate sulle macchine
 di produzione e saranno disponibili agli utenti finali. 
 
-Nei minuti successivi si tiene sotto controllo {\bf New Relic}, un
-applicazione di monitoraggio degli errori, per vedere se le modifiche pubblicate fanno generare degli errori inaspettati.
+Nei minuti successivi si tiene sotto controllo {\bf New Relic}, un'applicazione di monitoraggio degli errori, per vedere se le modifiche pubblicate fanno generare degli errori inaspettati.
 In caso di errori si fa \emph{rollback} alla versione precedente altrimenti la nuova funzionalità viene considerata pubblicata con successo
 \end{itemize}
 
@@ -85,7 +84,7 @@ Una volta committate le modifiche da pubblicare bisogna eseguire lo script \emph
 Lo script per prima cosa chiede le credenziali di autenticazione, apre un tunnel verso la macchina dove si vuole deploiare, scarica l'ultima
 versione zippata della repository e la invia alla macchina collegata.
 
-Una volta collegato in remoto alla macchina su cui di deve deploiare viene dezippata la repository e rinominata come \emph{wp-content}, mentre
+Una volta collegato in remoto alla macchina su cui di deve deploiare, viene dezippata la repository e rinominata come \emph{wp-content}, mentre
 quella che precedentemente si chiamava \emph{wp-content} viene rinominata \emph{wp-content-bkp} e quella che era \emph{wp-content-bkp}
 viene cancellata.
 Dentro\emph{wp-content} vengono eseguiti tutti i test di PhpUnit, eseguendo lo script presente all'interno della repository chiamato \emph{test.sh}.

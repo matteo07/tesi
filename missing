@@ -3,9 +3,6 @@ missing:
 Code:
 - test.sh
 
-Capitoli:
-- chiamata API cmsdealer
-
 WIDGETS 
 - widget kirivo listing
 - widget origini accessori
@@ -13,7 +10,8 @@ WIDGETS
 SURPLUS
 - spazio tra intestazione codice e codice
 - codice tiny con linea più alta
-	Link:
-	- local lab pro
-	- deploy test lab test pro
-	- clean code, refactoring
+
+Link:
+- local lab pro
+- deploy test lab test pro
+- clean code, refactoring

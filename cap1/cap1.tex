@@ -7,7 +7,7 @@
 
 Il progetto in discussione è stato sviluppato durante il periodo di  alto apprendistato presso 7Pixel,
 dove sono stato assegnato al team Iguana, team che si occupa
-della gestione principalmente front-end dei siti del \emph{Kirivo Network}
+della gestione, principalmente front-end, dei siti del \emph{Kirivo Network}
 
 \section{Il Kirivo Network}
 Il Kirivo Network (KN) è attualmente composto da due siti  \url{www.kirivo.it} 
@@ -72,9 +72,9 @@ e \url{www.origini.it} ai server opportuni.
 \section{I team del Kirivo Network}
 Lo sviluppo è l manutenzione dei siti del Kirivo Network viene effettuato da più team e questi sono:
 \begin{itemize}
-\item {\bf Team Iguana}: si occupano dello sviluppo di Kiruby.
-\item {\bf Team Nimbus}: si occupano dello svliuppo di Hybris SolR e Kitty.
-\item {\bf Content Manager}: si occupano della comunicazione con i venditori, della gestione dei prodotti a catologo
+\item {\bf Team Iguana}: si occupa dello sviluppo di Kiruby.
+\item {\bf Team Nimbus}: si occupa dello svliuppo di Hybris SolR e Kitty.
+\item {\bf Content Managers}: si occupano della comunicazione con i venditori, della gestione dei prodotti a catologo
  e della creazione di pagine di speciali, lavorano interfacciandosi con Hybris e Wordpress.
 \item {\bf Grafica}: lavora o direttamente su Kiruby o da al team Iguana grafiche HTML che vengono poi rese dinamiche 
 ed integrate con i vari servizi.
@@ -86,12 +86,12 @@ Le homepage di Origini e Kirivo sono le pagine che, nei rispettivi siti, possono
 frequentemente. Inoltre scegliere quali prodotti, quali offerte e quali contenuti 
 vanno inseriti in homepage non è compito dei programmatori ma dei \emph{content managers},
 quindi si rivela importante dare la possibilità ai \emph{content} di fare modifiche, come cambiare un prodotto da
-mettere tra quelli in evidenza in homepage, o il testo di un pannello con la cantina del mese senza dover passare 
+mettere tra quelli in evidenza in homepage o il testo di un pannello con la cantina del mese, senza dover passare 
 dai programmatori per fare modifiche.
 
 Per dare più libertà ai \emph{content}, il contenuto della homepage, ovvero tutto quello che non è
 header e footer, non si trova nel server Kiruby ma in pagine Wordpress che i content possono direttamente 
-modificare accedendo alla sezione admin di Wordpress.
+modificare accedendo alla sezione \emph{admin} di Wordpress.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figure/whtml.png}
@@ -108,8 +108,8 @@ modificare accedendo alla sezione admin di Wordpress.
 
 \newpage
 
-Il server Kiruby quando deve riceve una richiesta per la homepage chiede a Wordpress la sua pagina della home, ne estrae
-il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpress viene incluso nell'HTML tra Header e Footer il cui codice invece resta in Kiruby, in comune a tutte le altre pagine.
+Il server Kiruby, quando deve riceve una richiesta per la homepage, chiede a Wordpress la sua pagina della home, ne estrae
+il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpress viene incluso nell'HTML tra Header e Footer, il cui codice invece resta in Kiruby in comune a tutte le altre pagine.
 
 
 \begin{figure}
@@ -122,7 +122,7 @@ il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpres
 
 \section{La gemma cmsdealer}
 Per visualizzare contenuti dinamici, come ad esempio un Box di 4 vini viene utilizzata
-una gemma Ruby chiamata \emph{cmsdealer}.
+una gemma (così vengono chiamate in Ruby le librerie) chiamata \emph{cmsdealer}.
 
 La gemma è necessaria per il fatto che le informazioni dei prodotti, come nome del venditore, prezzo, spese di spedizione ecc... non sono accessibili a Wordpress, che viene utilizzato
 come server per la gestione e la modifica di contenuti editoriali, ma sono accessibili a Kiruby che ha al suo interno diversi
@@ -159,8 +159,8 @@ coi valori dei prodotti con gli identificativi specificati nell attributo \emph{
 \section{Obbiettivo}
 L'obbiettivo del progetto è quello di rendere l'edit delle pagine
 da parte dei content molto più semplice e flessibile,
-facendo in modo che i contenuti delle homepage possano essere editati visualmente e non
-andando a mettere mano direttamente sul codice HTML (vedi figure \ref{fig:meseform} e \ref{fig:smsform}).
+facendo in modo che i contenuti delle homepage possano essere editati visualmente e senza
+modificare direttamente il codice HTML (vedi figure \ref{fig:meseform} e \ref{fig:smsform}).
 
 Per farlo i content dovranno interagire con un interfaccia grafica web che permette
 la modifica delle informazioni necessarie e di poter spostare e copiare
