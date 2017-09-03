@@ -5,17 +5,17 @@
 
 \mcchap{API rendered prices}{cap:api}
 
-Una volta implementati i vari Widget delle componenti delle homepage le specifiche di poter
+Una volta implementati i vari widget delle componenti delle homepage le specifiche di poter
 modificare il contenuto delle componenti da interfaccia grafica e senza editare
 il codice HTML, di poter creare copie delle componenti già create, e di poter spostare
 semplicemente con drag and drop le varie componenti risultavano soddisfatte.
 
-L'uncio problema rimanente dunque era quello di avere un feedback visivo immediato durante l'editing della pagina.
+L'unico problema rimanente dunque era quello di avere un feedback visivo immediato durante l'editing della pagina.
 
 Il feedback visivo era già presente per quelle componenti senza prodotti il cui HTML risiedeva in Wordpress,
 per le componenti che fanno uso di prodotti invece l'utente che usava Wordpress non vedeva niente renderizzato.
 
-Questo perchè una volta compilato il Widget, Wordpress renderizza il tag \emph{dynamic} e non i prodotti,
+Questo perchè una volta compilato il widget, Wordpress renderizza il tag \emph{dynamic} e non i prodotti,
 questi compaiono solo una volta che la pagina Wordpress viene processata da Kiruby, che trovando il tag \emph{dynamic}
 lo sostituisce con l'HTML.
 
@@ -35,13 +35,13 @@ le stesse API vengono anche chiamate da \emph{cms\_dealer} per sostiture i tag \
 Per spiegare il meccanismo delle rendered API prendiamo in considerazione il meccanismo utilizzato per il widget
 \emph{Kirivo - Slider Prodotti} (vedi figura \ref{fig:smsrender}).
 
-Altri Widgets come \emph{Origini - Slider Accessori}, \emph{Origini - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
+Altri widgets come \emph{Origini - Slider Accessori}, \emph{Origini - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
 utilizzano un meccanismo praticamento identico ma utilizzano differenti template HTML.
 
 \section{Creazione chiamata in Wordpress}
-Inanzitutto per tutti quei Widget che fanno chiamate alle API è stata creata una superclasse PHP chiamata
+Innanzitutto per tutti quei widget che fanno chiamate alle API è stata creata una superclasse PHP chiamata
 \emph{AbstractProductWid}.
-Qui nel metodo \emph{widget}, che stampa l'HTML del Widget, viene stampato il contentuo che si riceve facendo la chiamata alle
+Qui nel metodo \emph{widget}, che stampa l'HTML del widget, viene stampato il contentuo che si riceve facendo la chiamata alle
 API. L'indirizzo a cui viene fatta la chiamata viene composta con il metodo \emph{composeUrl}.
 
 \begin{lstlisting}[style=customphp, language=Php,caption={I metodi widget e \emph{callApiAndRender} di \emph{AbstractProductWid}}] 
@@ -75,11 +75,11 @@ function composeUrl($instance) {
 
 \end{lstlisting}
 
-Le classi che estendono \emph{AbstractProductWid} poi devono definire il metodo \emph{iguanaApiRoute} che specifica
-a quale rotta il Widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata sovrascrivendo \emph{callApiAndRender} con la 
+Le classi che estendono \emph{AbstractProductWid} devono poi definire il metodo \emph{iguanaApiRoute}, che specifica
+a quale rotta il widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata, sovrascrivendo \emph{callApiAndRender} con la 
 chiamata al metodo \emph{composeUrl} della superclasse come prima istruzione.
 
-Ad esempio il codice del Widget \emph{Kirivo - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo scopri altro e sottotitolo sarà:
+Ad esempio il codice del widget \emph{Kirivo - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo \emph{scopri altro} e sottotitolo sarà:
 
 \begin{lstlisting}[style=customphp, language=Php,caption={Viene sovrascritto \emph{iguanaApiRoute} da \emph{ProductsWidget} per specificare la chiamata da effettuare}] 
 function iguanaApiRoute() {
@@ -87,7 +87,7 @@ function iguanaApiRoute() {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[style=customphp, language=Php,caption={Ridefinendo \emph{composeUrl} vengono aggiunti ulteriori campi specifici del Widget \emph{ProductsWidget}}] 
+\begin{lstlisting}[style=customphp, language=Php,caption={Ridefinendo \emph{composeUrl} vengono aggiunti ulteriori campi specifici del widget \emph{ProductsWidget}}] 
 
 function composeUrl($instance) {
     $api_request = parent::composeUrl($instance);
@@ -103,7 +103,7 @@ function composeUrl($instance) {
 
 \section{Creazione risposta in Kiruby}
 
-Il widget \emph{ProductsWidget} quindi quando deve essere renderizzato farà una chiamata del tipo
+Il widget \emph{ProductsWidget} quindi, quando deve essere renderizzato, fa una chiamata del tipo
 \begin{verbatim}
 https://origini.it/iguana/api/cms/rendered_box_prices?product_ids=id1,id2,id3
 &title=carouseltitle
@@ -238,22 +238,22 @@ compila l'erb \emph{products\_template.erb}.
 \section{Creazione chiamata in cmsdealer}
 
 La gemma \emph{cmsdealer} per trasformare i dynamic tag in contenuto renderizzato usava una procedura simile 
-a quella delle renderedAPI con la differenza che invece dei parametri della chiamata venivano letti i parametri
+a quella delle renderedAPI, con la differenza che invece dei parametri della chiamata venivano letti i parametri
 del tag \emph{dynamic}, e invece che restituire l'HTML della componente in un JSON questo veniva direttamente
 scritto nella pagina HTML da restituire dove veniva letto il tag \emph{dynamic}.
 
-Nonostante la creazione delle renderedAPI \emph{cmsdealer} veniva ancora utilizzato,
+Nonostante la creazione delle renderedAPI, \emph{cmsdealer} veniva ancora utilizzato,
 questo perchè nei siti a parte le homepages ci sono ancora pagine compilate scrivendo direttamente l'HTML
 e che usano i dynamic tag.
 
-Per evitare duplicazione di codice, in particolare la presenza doppia degli erb dei template dei prodotti,
+Per evitare duplicazione di codice, in particolare la presenza doppia degli \emph{erb} dei template dei prodotti,
 si è fatto in modo che quando \emph{cmsdealer} legge un tag \emph{dynamic}, sostituisce questo con il contenuto
 che viene restituito dalle renderedAPI.
 
-Per fare questo, in modo simile ai Widget, è stata implementata una sottoclasse di \emph{DynamicTag} chiamata
+Per fare questo, in modo simile ai widget, è stata implementata una sottoclasse di \emph{DynamicTag} chiamata
 \emph{ApiCallingTag}.
 
-In questa classe viene implementato il meccanismo di composizione della chiamta, la lettura della risposta e la sostituzione 
+In questa classe viene implementato il meccanismo di composizione della chiamata, la lettura della risposta e la sostituzione 
 del contenuto di quest'ultima con il tag \emph{dynamic}.
 
 Il metodo che restituisce il contenuto da sostituire \emph{replaced\_html} è stato ridefinito in modo da ritornare
@@ -277,8 +277,8 @@ class ApiCallingTag < DynamicTag
 end
 \end{lstlisting}
 
-Le sottoclassi di \emph{ApiCallingTag} invece devono implementare due metodi ovvero \emph{get\_route}
-dove viene definito quale rotta delle renderedAPI chimare e \emph{allowed\_api\_parameters} dove viene definita
+Le sottoclassi di \emph{ApiCallingTag} invece devono implementare due metodi ovvero \emph{get\_route},
+dove viene definito quale rotta delle renderedAPI chiamare, e \emph{allowed\_api\_parameters} dove viene definita
 un array con i parametri che possono essere letti dal tag \emph{dynamic}.
 
 Per esempio il dynamic tag OriginiListingBox quando legge il tag può individuare ed inoltrare nella chiamata i parametri

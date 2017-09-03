@@ -5,7 +5,7 @@
 
 \mcchap{Integrazione Page Builder}{cap:pb}
 
-Per passare ad una gestione più semplice delle pagine da parte dei Content
+Per passare ad una gestione più semplice delle pagine da parte dei content,
 mi è stato chiesto di cercare qualche sistema che permettesse una suddivisione
 della pagina in componenti facilmente editabili e riutilizzabili.
 
@@ -22,7 +22,7 @@ Per questo mi è stato consigliato di fare una ricerca tra le varie soluzioni di
 nella ampia libreria di plugin di Wordpress.
 
 
-Dopo aver analizzato i vari plugin disponibili è stata individuata una soluzione open source chiamata \emph{Page Builder by
+Dopo aver analizzato i vari plugin disponibili, è stata individuata una soluzione open source chiamata \emph{Page Builder by
 Site Origin}\cite{PB} che soddisfava le esigenze.
 
 \section{Page Builder by Site Origin}
@@ -42,14 +42,14 @@ con drag and drop.
 \end{figure}
 
 
-Il vantaggio di questo plugin rispetto ad altri plugin che permettono la suddivisione della pagine è che all'interno delle colonne
-oltre a poter inserire delle componenti standard fornite dal plugin si possono anche inserire i Widget di Wordpress.
+Il vantaggio di questo plugin rispetto ad altri plugin che permettono la suddivisione della pagine è che all'interno delle colonne,
+oltre a poter inserire delle componenti standard fornite dal plugin, si possono anche inserire i Widget di Wordpress.
 
 \section{Widget}
 I \emph{Widget} sono delle componenti riutilizzabili che possono essere aggiunte a qualsiasi
 tipo di pagina Wordpress. 
 
-Classici esempi di Widget sono le icone per i link ai social network, o un anteprima di un post creato, tuttavia è possibile creare Widget
+Classici esempi di widget sono le icone per i link ai social network o un'anteprima di un post creato, tuttavia è possibile creare widget
 personalizzati.
 
 Per creare un widget bisogna implementare una sottoclasse di WpWidget\cite{WPWID}
@@ -66,7 +66,7 @@ Le componenti compilate nel form vengono poi utilizzate dal metodo \emph{widget}
 
 \begin{figure}
   \includegraphics[width=0.6\textwidth]{figure/wid_form.png}
-  \caption{Il form che viene visualizzato per modificare i dati del Widget.}
+  \caption{Il form che viene visualizzato per modificare i dati del widget.}
   \label{fig:wform}
 \end{figure}
 \begin{figure}
@@ -78,7 +78,7 @@ Le componenti compilate nel form vengono poi utilizzate dal metodo \emph{widget}
 \newpage
 
 \section{Inizializzazione}
-Per inizializzare i Widget bisogna aggiungere una action\cite{WPACTION}, ovvero un meccanismo offerto da Wordpress per aggiungere dei comportamenti
+Per inizializzare i widget bisogna aggiungere una action\cite{WPACTION}, ovvero un meccanismo offerto da Wordpress per aggiungere dei comportamenti
 prestabiliti,  chiamata \emph{init\_widget} dove viene aggiunto ogni Widget creato.
 
 La sintassi per aggiungere un action in wordpress è la seguente
@@ -86,15 +86,15 @@ La sintassi per aggiungere un action in wordpress è la seguente
 add_action('nome_action','nome_della_funzione_implementata')
 \end{verbatim}
 
-Per far in modo di non dover aggiungere manualmente un Widget al file di inizializzazione ogni volta che se ne crea uno nuovo, è
+Per far in modo di non dover aggiungere manualmente un widget al file di inizializzazione ogni volta che se ne crea uno nuovo, è
 stato implementato un script di inizializzazione che va all'interno delle cartelle \emph{widget\_orgini} e \emph{widget\_kirivo} e aggiunge tutti
-i Widget che trova all'interno di queste cartelle, per individuare un widget allìinterno della cartella viene fatto pattern-matching per i file che terminano con \emph{Widget.php}.
+i widget che trova all'interno di queste cartelle, per individuare un widget allìinterno della cartella viene fatto pattern-matching per i file che terminano con \emph{Widget.php}.
 
 \lstinputlisting[style=customphp, basicstyle=\tiny, language=Php]{code/intializeWidget.php}
 \emph{Il file initialize\_widget.php}
 
 \section{Implementazione Widget}
-Per implementare i Widget necessari per le Homepage sono state isolate le componenti HTML necessarie e per ognuna
+Per implementare i widget necessari per le Homepage sono state isolate le componenti HTML necessarie e per ognuna
 di queste è stato creato un Widget poi, per ognuna di queste è stato creato il suo form per editare le componenti necessarie.
 
 Ci sono due categorie principali di widget
@@ -103,7 +103,7 @@ Ci sono due categorie principali di widget
 \item Widget che contengono prodotti.
 \end{itemize}
 
-Per implementare i Widget che non contengono prodotti, come ad esempio il widget \emph{Origni - Speciale}, è stato messo all'interno del metodo \emph{widget} direttamente
+Per implementare i widget che non contengono prodotti, come ad esempio il widget \emph{Origni - Speciale}, è stato messo all'interno del metodo \emph{widget} direttamente
 l'HTML di quella componente con eventuale contenuto dinamico stampato in php e nel metodo \emph{form} aggiunto l'HTML per gli input necessari.
 
 \begin{figure}
@@ -187,7 +187,7 @@ class specialWidget extends WP_Widget {
 }
 \end{lstlisting}
 
-Per i widget che contengono prodotti invece all'interno di \emph{widget} non è stato inserito il codice HTML con il template
+Per i \emph{widget} che contengono prodotti invece, all'interno del metodo \emph{widget} non è stato inserito il codice HTML con il template
 di ogni prodotto ma è stato messo il tag \emph{dynamic} i cui attributi sono popolati dinamicamente in base al contenuto del form.
 Una volta che il server Kiruby prende una pagina Wordpress e trova il dynamic tag allora provvede a sostituire il tag con le \emph{tile}
 di tutti i prodotti specificati.
