@@ -237,6 +237,77 @@ compila l'erb \emph{products\_template.erb}.
 \newpage
 \section{Creazione chiamata in cmsdealer}
 
+La gemma \emph{cmsdealer} per trasformare i dynamic tag in contenuto renderizzato usava una procedura simile 
+a quella delle renderedAPI con la differenza che invece dei parametri della chiamata venivano letti i parametri
+del tag \emph{dynamic}, e invece che restituire l'HTML della componente in un JSON questo veniva direttamente
+scritto nella pagina HTML da restituire dove veniva letto il tag \emph{dynamic}.
+
+Nonostante la creazione delle renderedAPI \emph{cmsdealer} veniva ancora utilizzato,
+questo perchè nei siti a parte le homepages ci sono ancora pagine compilate scrivendo direttamente l'HTML
+e che usano i dynamic tag.
+
+Per evitare duplicazione di codice, in particolare la presenza doppia degli erb dei template dei prodotti,
+si è fatto in modo che quando \emph{cmsdealer} legge un tag \emph{dynamic}, sostituisce questo con il contenuto
+che viene restituito dalle renderedAPI.
+
+Per fare questo, in modo simile ai Widget, è stata implementata una sottoclasse di \emph{DynamicTag} chiamata
+\emph{ApiCallingTag}.
+
+In questa classe viene implementato il meccanismo di composizione della chiamta, la lettura della risposta e la sostituzione 
+del contenuto di quest'ultima con il tag \emph{dynamic}.
+
+Il metodo che restituisce il contenuto da sostituire \emph{replaced\_html} è stato ridefinito in modo da ritornare
+il contenuto della risposta delle API.
+
+\begin{lstlisting}[language=Ruby,caption={Il codice della classe \emph{ApiCallingTag}}] 
+class ApiCallingTag < DynamicTag
+  def replaced_html(original_url = nil)
+    params = {url: original_url}
+    allowed_api_parameters.each do |p|
+      params[p] = eval(p) if self.respond_to?(p)
+    end
+    json = JSON.parse(Connection.new.get(url_for(params)).body)
+    json['rendered_html']
+  end
+
+  def url_for(params)
+    URI.add_params("www.origini.it/iguana/api/cms/#{get\_route}",
+     params)
+  end
+end
+\end{lstlisting}
+
+Le sottoclassi di \emph{ApiCallingTag} invece devono implementare due metodi ovvero \emph{get\_route}
+dove viene definito quale rotta delle renderedAPI chimare e \emph{allowed\_api\_parameters} dove viene definita
+un array con i parametri che possono essere letti dal tag \emph{dynamic}.
+
+Per esempio il dynamic tag OriginiListingBox quando legge il tag può individuare ed inoltrare nella chiamata i parametri
+product\_ids, title, description, number, listing\_link e aggiungerà questi parametri alla chiamata alla rotta: 
+
+\emph{www.origini.it/iguana/api/cms/rendered\_origini\_listing\_box}
+
+\begin{lstlisting}[language=Ruby,caption={Il codice della classe che legge e trasforma il tag con type \emph{OriginiListingBox}}] 
+class OriginiListingBox < ApiCallingTag
+  def allowed_api_parameters
+    ['product_ids','title','description', 'number','listing_link']
+  end
+
+  def get_route
+    'rendered_origini_listing_box'
+  end
+end
+\end{lstlisting}
+
+\emph{Cmsdealer} quindi quando troverà un tag del tipo
+\begin{verbatim}
+<dynamic type="OriginiListingBox" product_ids="id1,id2,id3" title="products" 
+  listing_link="/speciale/spedizione_gratuita">
+\end{verbatim}
+Sostituirà a questo il contenuto ritornato dalla chiamta alla rotta
+\begin{verbatim}
+www.origini.it/iguana/api/cms/rendered_origini_listing_box&product_ids=id1,id2,id3
+&title=products&listing_link=%2Fspeciale%2Fspedizione_gratuita\end{verbatim}
+
 Così facendo tutti i requisiti del progetto risultano soddisfatti.
 Nei due capitoli successivi vengono elencati i Widget creati per i due siti, specificando
 quali valori sono stati resi personalizzabili.
