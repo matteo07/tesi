@@ -184,3 +184,14 @@ StrictHostKeyChecking=no -R 8765:192.168.254.140:22 localhost \
 HERE
     echo "${GREEN_COLOR} Success, CMS is online!${RESET_COLOR}"
 \end{lstlisting}
+
+\newpage
+\begin{lstlisting}[language=bash,caption={Lo script test.sh per eseguire tutti i test nella cartella \emph{test} e stamparne l'esito in un file di log e a console.}]
+#!/usr/bin/env bash
+LOGFILE=/media/www/wordpress/wp-content/themes/basic/test/.log.txt
+LOAD=/media/www/wordpress/wp-load.php
+TESTS=/media/www/wordpress/wp-content/themes/basic/test/.
+
+phpunit --bootstrap $LOAD $TESTS > $LOGFILE
+cat $LOGFILE;
+\end{lstlisting}
