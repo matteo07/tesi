@@ -5,7 +5,7 @@
 
 \mcchap{API rendered prices}{cap:api}
 
-Una volta implementati i vari widget delle componenti delle homepage le specifiche di poter
+Una volta implementati i vari Widget delle componenti delle homepages le specifiche di poter
 modificare il contenuto delle componenti da interfaccia grafica e senza editare
 il codice HTML, di poter creare copie delle componenti già create, e di poter spostare
 semplicemente con drag and drop le varie componenti risultavano soddisfatte.
@@ -15,7 +15,7 @@ L'unico problema rimanente dunque era quello di avere un feedback visivo immedia
 Il feedback visivo era già presente per quelle componenti senza prodotti il cui HTML risiedeva in Wordpress,
 per le componenti che fanno uso di prodotti invece l'utente che usava Wordpress non vedeva niente renderizzato.
 
-Questo perchè una volta compilato il widget, Wordpress renderizza il tag \emph{dynamic} e non i prodotti,
+Questo perchè una volta compilato il Widget, Wordpress renderizza il tag \emph{dynamic} e non i prodotti,
 questi compaiono solo una volta che la pagina Wordpress viene processata da Kiruby, che trovando il tag \emph{dynamic}
 lo sostituisce con l'HTML.
 
@@ -27,25 +27,25 @@ lo sostituisce con l'HTML.
 
 Per risolvere questa problema è stato deciso di implementare nel server Kiruby delle API chiamate
 \emph{renderedAPI} che fatte delle richieste con gli ID dei prodotti e altri parametri come titolo e descrizione
-ritorna l'HTML con tutte le schede prodotto ed eventuali intestazioni.
+ritorna il codice HTML con tutte le schede prodotto ed eventuali intestazioni.
 
 Queste API poi vengono chiamate da Wordpress che riceve subito l'HTML e lo renderizza immediatamente,
-le stesse API vengono anche chiamate da \emph{cms\_dealer} per sostiture i tag \emph{dynamic}.
+le stesse API vengono anche chiamate da \emph{cmsdealer} per sostiture i tag \emph{dynamic}.
 
-Per spiegare il meccanismo delle rendered API prendiamo in considerazione il meccanismo utilizzato per il widget
+Per spiegare il meccanismo delle rendered API prendiamo in considerazione il meccanismo utilizzato per il Widget
 \emph{Kirivo - Slider Prodotti} (vedi figura \ref{fig:smsrender}).
 
-Altri widgets come \emph{Origini - Slider Accessori}, \emph{Origini - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
+Altri Widgets come \emph{Origini - Slider Accessori}, \emph{Origini - Slider Prodotti} e \emph{Kirivo - Griglia Prodotti}
 utilizzano un meccanismo praticamento identico ma utilizzano differenti template HTML.
 
 \section{Creazione chiamata in Wordpress}
-Innanzitutto per tutti quei widget che fanno chiamate alle API è stata creata una superclasse PHP chiamata
+Innanzitutto per tutti quei Widget che fanno chiamate alle API è stata creata una superclasse PHP chiamata
 \emph{AbstractProductWid}.
-Qui nel metodo \emph{widget}, che stampa l'HTML del widget, viene stampato il contentuo che si riceve facendo la chiamata alle
+Qui nel metodo \emph{Widget}, che stampa l'HTML del Widget, viene stampato il contenuto che si riceve facendo la chiamata alle
 API. L'indirizzo a cui viene fatta la chiamata viene composta con il metodo \emph{composeUrl}.
 
-\begin{lstlisting}[style=customphp, language=Php,caption={I metodi widget e \emph{callApiAndRender} di \emph{AbstractProductWid}}] 
-function widget($args, $instance){
+\begin{lstlisting}[style=customphp, language=Php,caption={I metodi Widget e \emph{callApiAndRender} di \emph{AbstractProductWid}}] 
+function Widget($args, $instance){
 	$this->callApiAndRender($this->composeUrl($instance));
 }
 
@@ -76,10 +76,10 @@ function composeUrl($instance) {
 \end{lstlisting}
 
 Le classi che estendono \emph{AbstractProductWid} devono poi definire il metodo \emph{iguanaApiRoute}, che specifica
-a quale rotta il widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata, sovrascrivendo \emph{callApiAndRender} con la 
+a quale rotta il Widget deve fare la chiamata ed eventualmente aggiungere campi alla chiamata, sovrascrivendo \emph{callApiAndRender} con la 
 chiamata al metodo \emph{composeUrl} della superclasse come prima istruzione.
 
-Ad esempio il codice del widget \emph{Kirivo - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo \emph{scopri altro} e sottotitolo sarà:
+Ad esempio il codice del Widget \emph{Kirivo - Slider Prodotti} che deve fare la chiamata alla rotta \emph{/iguana/api/cms/rendered\_box\_prices} e aggiungere  anche i campi link allo \emph{scopri altro} e sottotitolo sarà:
 
 \begin{lstlisting}[style=customphp, language=Php,caption={Viene sovrascritto \emph{iguanaApiRoute} da \emph{ProductsWidget} per specificare la chiamata da effettuare}] 
 function iguanaApiRoute() {
@@ -87,7 +87,7 @@ function iguanaApiRoute() {
 }
 \end{lstlisting}
 
-\begin{lstlisting}[style=customphp, language=Php,caption={Ridefinendo \emph{composeUrl} vengono aggiunti ulteriori campi specifici del widget \emph{ProductsWidget}}] 
+\begin{lstlisting}[style=customphp, language=Php,caption={Ridefinendo \emph{composeUrl} vengono aggiunti ulteriori campi specifici del Widget \emph{ProductsWidget}}] 
 
 function composeUrl($instance) {
     $api_request = parent::composeUrl($instance);
@@ -103,7 +103,7 @@ function composeUrl($instance) {
 
 \section{Creazione risposta in Kiruby}
 
-Il widget \emph{ProductsWidget} quindi, quando deve essere renderizzato, fa una chiamata del tipo
+Il Widget \emph{ProductsWidget} quindi, quando deve essere renderizzato, fa una chiamata del tipo
 \begin{verbatim}
 https://origini.it/iguana/api/cms/rendered_box_prices?product_ids=id1,id2,id3
 &title=carouseltitle
@@ -158,10 +158,10 @@ def rendered_html(prices, title, subtitle, link)
 end
 \end{lstlisting}
 
-Una volta presi i prodotti vengono passati insieme al titolo all'erb \emph{origini\_products\_box.erb}, che a sua volta per ogni prodotto
+Una volta presi i prodotti vengono passati insieme al titolo all'erb \emph{kirivo\_products\_box.erb}, che a sua volta per ogni prodotto
 compila l'erb \emph{products\_template.erb}.
 \newpage
-\begin{lstlisting}[basicstyle=\tiny,caption={Il template \emph{origini\_products\_box.erb}}] 
+\begin{lstlisting}[basicstyle=\tiny,caption={Il template \emph{kirivo\_products\_box.erb}}] 
 <section id="hp_specials" class="bg_white">
   <div class="row text-center">
     <h5 class="subheader text-center"><%= title %></h5>
@@ -179,7 +179,7 @@ compila l'erb \emph{products\_template.erb}.
 <div class="columns product_tile end" data-price-container>
   <div class="deal_offer_tile" data-merchant-id="<%= price.merchant_id %>">
     <div class="feedback_mask">
-      <a href="<%= Origini::ProductSheetRoute.url_for(price) %>">
+      <a href="<%= Kirivo::ProductSheetRoute.url_for(price) %>">
         <div class="upper_tile">
           <div class="image_box">
               <picture>
@@ -191,22 +191,13 @@ compila l'erb \emph{products\_template.erb}.
       <div class="bottom_tile">
         <div class="tile_description">
           <small class="tile_quantity text_grey"><%= price.capacity %></small>
-          <a href="<%= Origini::ProductSheetRoute.url_for(price) %>">
+          <a href="<%= Kirivo::ProductSheetRoute.url_for(price) %>">
             <h4 class="product_name" data-price-name>
               <strong><%= price.name %><% if price.is_year_defined %>
-               <%= price.production_year %>
             <% end %>
             </strong></h4>
           </a>
         </div>
-      </div>
-      <div class="more_info_hover">
-        <% if price.winery %>
-            <a href="<%= Origini::WineryRoute.url_for(price.winery) %>">
-              <h5 class="tile_winery_name text_grey"><%= price.winery %></h5>
-            </a>
-        <% end %>
-        <h5 class="tile_docg_name"><%= price.denomination %></h5>
       </div>
       <div class="cart_feedback">
         <i class="fa fa-3x fa-check"></i>Aggiunto al carrello
@@ -230,7 +221,7 @@ compila l'erb \emph{products\_template.erb}.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figure/livedit.png}
-  \caption{Con le renderedAPI i prodotti vengono visualizzati.}
+  \caption{Con le renderedAPI, in modalità \emph{live edit}, i prodotti vengono visualizzati.}
   \label{fig:kspec}
 \end{figure}
 
@@ -240,7 +231,7 @@ compila l'erb \emph{products\_template.erb}.
 La gemma \emph{cmsdealer} per trasformare i dynamic tag in contenuto renderizzato usava una procedura simile 
 a quella delle renderedAPI, con la differenza che invece dei parametri della chiamata venivano letti i parametri
 del tag \emph{dynamic}, e invece che restituire l'HTML della componente in un JSON questo veniva direttamente
-scritto nella pagina HTML da restituire dove veniva letto il tag \emph{dynamic}.
+scritto nella pagina dove veniva letto il tag \emph{dynamic}.
 
 Nonostante la creazione delle renderedAPI, \emph{cmsdealer} veniva ancora utilizzato,
 questo perchè nei siti a parte le homepages ci sono ancora pagine compilate scrivendo direttamente l'HTML
@@ -250,7 +241,7 @@ Per evitare duplicazione di codice, in particolare la presenza doppia degli \emp
 si è fatto in modo che quando \emph{cmsdealer} legge un tag \emph{dynamic}, sostituisce questo con il contenuto
 che viene restituito dalle renderedAPI.
 
-Per fare questo, in modo simile ai widget, è stata implementata una sottoclasse di \emph{DynamicTag} chiamata
+Per fare questo, in modo simile ai Widget, è stata implementata una sottoclasse di \emph{DynamicTag} chiamata
 \emph{ApiCallingTag}.
 
 In questa classe viene implementato il meccanismo di composizione della chiamata, la lettura della risposta e la sostituzione 
