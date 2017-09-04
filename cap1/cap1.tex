@@ -50,7 +50,7 @@ le ricerche per categorie o caratteristiche del prodotto.
 servizi di backend. 
 \item {\bf Wordpress}: usato per la creazione di pagine di contenuto che vengono incluse da Kiruby.
 
-Il server di Wordpress si trova nella LAN aziendale ed è accessibile solamente dall server Kiruby, la sua
+Il server di Wordpress si trova nella LAN aziendale ed è accessibile solamente dal server Kiruby, la sua
 presenza è nascosta agli utenti finali.
 \item {\bf Redis}: un database noSql che, salvando tutto il suo contenuto in RAM, garantisce alte prestazioni.
 
@@ -70,7 +70,7 @@ e \url{www.origini.it} ai server opportuni.
 \newpage
 
 \section{I team del Kirivo Network}
-Lo sviluppo è l manutenzione dei siti del Kirivo Network viene effettuato da più team e questi sono:
+Lo sviluppo è la manutenzione dei siti del Kirivo Network viene effettuato da più team e questi sono:
 \begin{itemize}
 \item {\bf Team Iguana}: si occupa dello sviluppo di Kiruby.
 \item {\bf Team Nimbus}: si occupa dello svliuppo di Hybris SolR e Kitty.
@@ -121,7 +121,7 @@ il contenuto e lo renderizza nell'HTML che restituisce. Il contenuto di Wordpres
 
 
 \section{La gemma cmsdealer}
-Per visualizzare contenuti dinamici, come ad esempio un Box di 4 vini viene utilizzata
+Per visualizzare contenuti dinamici, come ad esempio un Box con 3 prodotti viene utilizzata
 una gemma (così vengono chiamate in Ruby le librerie) chiamata \emph{cmsdealer}.
 
 La gemma è necessaria per il fatto che le informazioni dei prodotti, come nome del venditore, prezzo, spese di spedizione ecc... non sono accessibili a Wordpress, che viene utilizzato
@@ -135,7 +135,7 @@ i valori dei prodotti selezionati
 
 Esempio: se processando la pagina HTML di Wordpress Kiruby trova
 \begin{verbatim}
-	<dynamic type="KirivoListingBox" ids="3422,2345,2872,2209" />
+	<dynamic type="KirivoListingBox" ids="3422,2345,2872" />
 \end{verbatim}
 allora verrà cercato il template di \emph{kirivolistingbox.html.erb} e verrà popolato
 coi valori dei prodotti con gli identificativi specificati nell attributo \emph{ids}.
@@ -182,11 +182,11 @@ componenti della home con un click o con un drag and drop.
 \section{Obbiettivo secondario}
 Obbiettivo secondario del progetto e di rendere il sito più manutenibile.
 
-La criticità del sistema è che contiene codice duplicato di componenti HTML nella gemma CmsDealer, in Kiruby
+La criticità del sistema è che contiene codice duplicato di componenti HTML nella gemma CmsDealer 
 e nei widget di Wordpress. 
 
-Per risolvere il problema sono state create le  \emph{RenderdPricesAPI} 
+Per risolvere il problema sono state create le  \emph{renderdAPI} 
 che restituiscono frammenti di HTML renderizzato per le varie componenti della home che contengono prodotti.
 
-In questo modo il codice del template resta solamente in Kiruby e esponendo le 
-API questo viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer.
+In questo modo il codice del template resta solamente in Kiruby che, esponendo le sue
+API, viene usato sia dai Widget di Wordpress sia dalla gemma CmsDealer.
