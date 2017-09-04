@@ -90,14 +90,14 @@ function iguanaApiRoute() {
 \begin{lstlisting}[style=customphp, language=Php,caption={Ridefinendo \emph{composeUrl} vengono aggiunti ulteriori campi specifici del Widget \emph{ProductsWidget}}] 
 
 function composeUrl($instance) {
-    $api_request = parent::composeUrl($instance);
-    if(!is_null($instance['subtitle'])) {
-        $api_request .= "&subtitle=".urlencode($instance['subtitle']);
-    }
-    if(!is_null($instance['scopri-link'])) {
-        $api_request .= "&link=". urlencode($instance['scopri-link']);
-    }
-    return $api_request;
+  $api_request = parent::composeUrl($instance);
+  if(!is_null($instance['subtitle'])) {
+    $api_request .= "&subtitle=".urlencode($instance['subtitle']);
+  }
+  if(!is_null($instance['scopri-link'])) {
+    $api_request .= "&link=". urlencode($instance['scopri-link']);
+  }
+  return $api_request;
 }
 \end{lstlisting}
 
@@ -204,8 +204,8 @@ compila l'erb \emph{products\_template.erb}.
       </div>
     </div>
     <div class="tile_hover">
-      <form class="add_to_cart_form" action="<%= Cart.add_cheapest_to_cart_url %>" method="post">
-        <button id="add_to_cart_<%= price.id %>" class="button_add_to_cart white" data-add_to_cart>
+      <form class="add_to_cart_form" action="<%= Cart.add_to_cart_url %>" method="post">
+        <button id="add_to_cart_<%= price.id %>" class="button_add_to_cart" data-add_to_cart>
           <i class="fa fa-shopping-cart"></i> AGGIUNGI AL CARRELLO
         </button>
 
