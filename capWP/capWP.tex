@@ -73,8 +73,7 @@ e rimangono intatte in tutte le macchine.
 
 \section{Creazione dello script di deploy}
 Lo script di deploy, essendo tutte la macchine di sviluppo e produzione macchine Linux, è stato scritto in un file eseguibile
-\emph{kirCMS-autodeploy.sh} utilizzando il linguaggio Bash ed utilizza una procedura simile allo script di deploy 
-utilizzato da Kiruby.
+\emph{kirCMS-autodeploy.sh} utilizzando il linguaggio Bash.
 
 Prima di eseguire il deploy è necessario fare commit sul master della repository di Wordpress in modo da avere i sorgenti git aggiornati.
 
@@ -125,7 +124,7 @@ WP_CONTENT=wp-content
 WP_CONTENT_BKP=wp-content-bkp
 UPLOADS=wp-content/uploads
 
-LOGFILE=/media/www/wordpress/wp-content/themes/basic/test/.log.txt
+LOGFILE=/media/www/wordpress/.log.txt
 LOAD=/media/www/wordpress/wp-load.php
 TESTS=/media/www/wordpress/wp-content/themes/basic/test/.
 
